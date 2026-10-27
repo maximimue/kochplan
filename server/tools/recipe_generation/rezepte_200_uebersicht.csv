@@ -1,0 +1,201 @@
+﻿ID;Name;Kategorie;Küche;Vegan;Allergene;Portionen;Zeit gesamt (min);Schwierigkeit;Geräte;Kosten/Portion (EUR);kcal/Portion
+R001;Apfel-Zimt-Porridge mit Walnüssen;Frühstück;International;nein;Milcheiweiß, Nüsse;2;13;einfach;Herd;1.8;376
+R002;Beeren-Porridge mit Mandelmus;Frühstück;International;ja;Nüsse;2;13;einfach;Herd;3.2;348
+R003;Bananen-Kakao-Porridge mit Kürbiskernen;Frühstück;International;nein;Milcheiweiß;2;13;einfach;Herd;1.8;404
+R004;Birnen-Kardamom-Porridge mit Haselnüssen;Frühstück;International;ja;Nüsse;2;13;einfach;Herd;3.2;354
+R005;Mango-Kokos-Porridge mit Chiasamen;Frühstück;Asiatisch;ja;-;2;13;einfach;Herd;3.2;322
+R006;Pflaumen-Porridge mit Pekannüssen;Frühstück;International;nein;Milcheiweiß, Nüsse;2;13;einfach;Herd;3.2;368
+R007;Buchweizen-Pancakes mit Beeren;Frühstück;International;nein;Ei, Milcheiweiß;2;25;mittel;Herd;1.8;396
+R008;Vegane Bananen-Pancakes;Frühstück;International;ja;-;2;25;mittel;Herd;1.8;376
+R009;Kürbis-Pancakes mit Zimt;Frühstück;International;nein;Ei, Milcheiweiß;2;25;mittel;Herd;3.2;340
+R010;Mandelmehl-Waffeln mit Ahornsirup;Frühstück;International;nein;Ei, Milcheiweiß, Nüsse;2;25;mittel;Herd;3.2;413
+R011;Herzhafte Karotten-Pancakes;Frühstück;International;nein;Ei;2;25;mittel;Herd;1.8;420
+R012;Gemüse-Rührei;Frühstück;International;nein;Ei;2;15;einfach;Herd;1.8;328
+R013;Kichererbsenmehl-Scramble vegan;Frühstück;International;ja;-;2;15;einfach;Herd;1.8;363
+R014;Pilz-Rührei mit Kräutern;Frühstück;International;nein;Ei, Milcheiweiß;2;15;einfach;Herd;1.8;320
+R015;Spinat-Feta-Rührei;Frühstück;Mediterran;nein;Ei, Milcheiweiß;2;15;einfach;Herd;3.2;357
+R016;Beeren-Smoothie-Bowl;Frühstück;International;nein;Milcheiweiß;2;10;einfach;Herd, Mixer/Pürierstab;3.2;371
+R017;Grüne Smoothie-Bowl;Frühstück;International;ja;-;2;10;einfach;Mixer/Pürierstab;3.2;330
+R018;Schoko-Bananen-Bowl mit Erdnussmus;Frühstück;International;ja;Erdnuss;2;10;einfach;Mixer/Pürierstab;3.2;354
+R019;Drachenfrucht-Bowl;Frühstück;International;ja;-;2;10;einfach;Mixer/Pürierstab;5.5;359
+R020;Ananas-Kokos-Bowl mit Chiasamen;Frühstück;International;ja;-;2;10;einfach;Mixer/Pürierstab;3.2;392
+R021;Mediterraner Linsensalat;Salat;Mediterran;ja;-;2;20;einfach;Herd;1.8;380
+R022;Quinoa-Tabouleh glutenfrei;Salat;Levantinisch;ja;-;2;20;einfach;Herd;3.2;367
+R023;Griechischer Salat mit laktosefreiem Feta;Salat;Mediterran;nein;Milcheiweiß;2;15;einfach;-;3.2;279
+R024;Rote-Bete-Salat mit laktosefreiem Frischkäse;Salat;International;ja;Nüsse;2;15;einfach;Herd;3.2;333
+R025;Karotten-Orangen-Salat mit Kreuzkümmel;Salat;Mediterran;ja;-;2;15;einfach;-;1.8;332
+R026;Fenchel-Orangen-Salat;Salat;Mediterran;ja;-;2;15;einfach;-;1.8;253
+R027;Rucola-Birnen-Salat mit Walnüssen;Salat;Mediterran;ja;Nüsse;2;10;einfach;-;3.2;354
+R028;Thai-Glasnudelsalat mit Erdnüssen;Salat;Asiatisch;ja;Erdnuss, Sesam;2;15;mittel;Herd;3.2;297
+R029;Mexikanischer Bohnensalat;Salat;Mexikanisch;ja;-;2;15;einfach;-;1.8;316
+R030;Blumenkohl-Reis-Salat mit Granatapfel;Salat;Levantinisch;ja;-;2;15;einfach;-;3.2;345
+R031;Kichererbsen-Spinat-Salat mit Zitrone;Salat;Mediterran;ja;-;2;10;einfach;-;1.8;356
+R032;Roter-Linsen-Salat Levantinisch mit Sumach;Salat;Levantinisch;ja;-;2;20;einfach;Herd;1.8;307
+R033;Gebackener Kürbis-Salat mit Kürbiskernen;Salat;International;ja;-;2;35;einfach;Backofen;3.2;320
+R034;Avocado-Mango-Salat;Salat;International;ja;-;2;10;einfach;-;3.2;377
+R035;Gurken-Dill-Salat mit Joghurt-Dressing;Salat;International;nein;Milcheiweiß;2;10;einfach;-;1.8;306
+R036;Wintersalat Grünkohl-Granatapfel-Walnuss;Salat;International;ja;Nüsse;2;15;einfach;-;3.2;264
+R037;Süßkartoffel-Schwarzbohnen-Salat Mexikanisch;Salat;Mexikanisch;ja;-;2;35;einfach;Backofen;1.8;356
+R038;Rettich-Karotten-Salat mit Sesam-Dressing;Salat;Asiatisch;ja;Sesam;2;15;einfach;-;1.8;300
+R039;Rosenkohl-Cranberry-Salat mit Pekannüssen;Salat;International;ja;Nüsse;2;15;mittel;Herd;3.2;313
+R040;Tomaten-Melonen-Salat mit laktosefreiem Feta;Salat;Mediterran;nein;Milcheiweiß;2;10;einfach;-;3.2;259
+R041;Rote-Linsensuppe mit Kokosmilch & Curry;Suppe;Indisch;ja;-;2;30;einfach;Herd;1.8;308
+R042;Kürbiscremesuppe mit Ingwer;Suppe;International;ja;-;2;35;einfach;Herd, Mixer/Pürierstab;1.8;223
+R043;Tomatensuppe Mediterran;Suppe;Mediterran;ja;-;2;30;einfach;Herd, Mixer/Pürierstab;1.8;262
+R044;Blumenkohlsuppe mit Muskat;Suppe;International;nein;Milcheiweiß;2;30;einfach;Herd, Mixer/Pürierstab;3.2;295
+R045;Brokkoli-Cremesuppe mit laktosefreiem Käse;Suppe;International;ja;-;2;30;einfach;Herd, Mixer/Pürierstab;3.2;264
+R046;Süßkartoffel-Kokos-Suppe;Suppe;International;ja;-;2;35;einfach;Herd, Mixer/Pürierstab;1.8;245
+R047;Pastinaken-Apfel-Suppe;Suppe;International;nein;Milcheiweiß;2;35;einfach;Herd, Mixer/Pürierstab;3.2;227
+R048;Zucchini-Minze-Suppe;Suppe;Mediterran;ja;-;2;25;einfach;Herd, Mixer/Pürierstab;1.8;225
+R049;Rote-Bete-Suppe mit Joghurt-Topping;Suppe;International;nein;Milcheiweiß;2;35;einfach;Herd, Mixer/Pürierstab;3.2;265
+R050;Erbsensuppe mit Minze;Suppe;International;ja;-;2;25;einfach;Herd, Mixer/Pürierstab;1.8;299
+R051;Sellerie-Cremesuppe;Suppe;International;nein;Milcheiweiß;2;35;einfach;Herd, Mixer/Pürierstab;3.2;273
+R052;Champignon-Cremesuppe mit Sahne;Suppe;International;nein;Milcheiweiß;2;30;einfach;Herd, Mixer/Pürierstab;3.2;255
+R053;Kichererbsen-Spinat-Eintopf;Suppe;Mediterran;ja;-;2;30;einfach;Herd;1.8;303
+R054;Schwarzbohnen-Suppe Mexikanisch;Suppe;Mexikanisch;ja;-;2;30;einfach;Herd, Mixer/Pürierstab;1.8;269
+R055;Karotten-Ingwer-Suppe;Suppe;International;ja;-;2;30;einfach;Herd, Mixer/Pürierstab;1.8;304
+R056;Kokos-Gemüse-Suppe Thai-Style;Suppe;Asiatisch;ja;-;2;30;einfach;Herd;3.2;244
+R057;Weißkohl-Kartoffel-Eintopf;Suppe;Deutsch/Alpenländisch;nein;Milcheiweiß;2;40;einfach;Herd;1.8;271
+R058;Fenchel-Orangen-Suppe;Suppe;Mediterran;ja;-;2;30;einfach;Herd, Mixer/Pürierstab;3.2;220
+R059;Spargel-Cremesuppe;Suppe;International;nein;Milcheiweiß;2;30;mittel;Herd, Mixer/Pürierstab;5.5;220
+R060;Minestrone glutenfrei;Suppe;Mediterran;ja;-;2;35;einfach;Herd;1.8;279
+R061;Buddha Bowl Mediterran;Bowl;Mediterran;nein;Milcheiweiß;2;30;einfach;Herd;3.2;551
+R062;Burrito Bowl Mexikanisch;Bowl;Mexikanisch;ja;-;2;30;einfach;Herd;1.8;551
+R063;Poke-Style Bowl mit Sesam;Bowl;Asiatisch;ja;Sesam;2;30;mittel;Herd;3.2;475
+R064;Falafel Bowl Levantinisch;Bowl;Levantinisch;ja;Sesam;2;40;mittel;Backofen, Herd;3.2;426
+R065;Teriyaki-Gemüse-Bowl (ohne Soja);Bowl;Asiatisch;ja;Sesam;2;30;einfach;Herd;1.8;552
+R066;Süßkartoffel-Schwarzbohnen-Bowl;Bowl;Mexikanisch;ja;-;2;35;einfach;Backofen, Herd;1.8;509
+R067;Curry-Quinoa-Bowl Indisch;Bowl;Indisch;ja;-;2;30;einfach;Herd;3.2;520
+R068;Thai-Erdnuss-Bowl;Bowl;Asiatisch;ja;Erdnuss;2;25;mittel;Herd;3.2;545
+R069;Herbst-Bowl Kürbis-Grünkohl-Walnuss;Bowl;International;ja;Nüsse;2;40;einfach;Backofen, Herd;3.2;486
+R070;Tex-Mex-Bowl mit Mais & Avocado;Bowl;Mexikanisch;ja;-;2;25;einfach;Herd;1.8;496
+R071;Griechische Bowl mit Hirse & Feta;Bowl;Mediterran;nein;Milcheiweiß;2;30;einfach;Herd;3.2;504
+R072;Marokkanische Hirse-Bowl mit Granatapfel;Bowl;International;ja;-;2;30;einfach;Herd;3.2;474
+R073;Protein-Bowl mit Linsen & Rucola;Bowl;Mediterran;ja;-;2;30;einfach;Herd;1.8;480
+R074;Kokos-Curry-Gemüse-Bowl;Bowl;Asiatisch;ja;-;2;30;einfach;Herd;3.2;451
+R075;Rote-Bete-Hummus-Bowl;Bowl;Levantinisch;ja;Sesam;2;25;einfach;Herd, Mixer/Pürierstab;3.2;528
+R076;Buffalo-Blumenkohl-Bowl;Bowl;International;nein;Milcheiweiß;2;40;mittel;Backofen, Herd;3.2;428
+R077;Reis-Bohnen-Bowl Kuba-Style;Bowl;International;ja;-;2;35;einfach;Herd;1.8;420
+R078;Pilz-Risotto-Bowl;Bowl;Mediterran;nein;Milcheiweiß;2;40;mittel;Herd;3.2;534
+R079;Spinat-Quinoa-Bowl mit Pinienkernen;Bowl;Mediterran;ja;Nüsse;2;30;einfach;Herd;3.2;516
+R080;Kichererbsen-Sesam-Bowl;Bowl;Asiatisch;ja;Sesam;2;30;einfach;Herd;1.8;548
+R081;Gemüse-Stir-Fry Asiatisch;Pfannengericht;Asiatisch;ja;Sesam;2;25;einfach;Herd;1.8;470
+R082;Kichererbsen-Curry-Pfanne;Pfannengericht;Indisch;ja;-;2;30;einfach;Herd;1.8;382
+R083;Paprika-Zucchini-Pfanne Mediterran;Pfannengericht;Mediterran;nein;Milcheiweiß;2;25;einfach;Herd;1.8;423
+R084;Süßkartoffel-Black-Bean-Pfanne Mexikanisch;Pfannengericht;Mexikanisch;ja;-;2;30;einfach;Herd;1.8;388
+R085;Pilz-Spinat-Pfanne mit Knoblauch;Pfannengericht;Mediterran;nein;Milcheiweiß;2;20;einfach;Herd;1.8;460
+R086;Brokkoli-Cashew-Pfanne Asiatisch;Pfannengericht;Asiatisch;ja;Nüsse, Sesam;2;25;einfach;Herd;3.2;391
+R087;Blumenkohl-Curry-Pfanne Indisch;Pfannengericht;Indisch;ja;-;2;30;einfach;Herd;1.8;418
+R088;Linsen-Gemüse-Bolognese-Pfanne;Pfannengericht;Mediterran;ja;Sellerie;2;35;einfach;Herd;1.8;386
+R089;Ratatouille-Pfanne;Pfannengericht;Mediterran;ja;-;2;30;einfach;Herd;1.8;466
+R090;Rosenkohl-Maronen-Pfanne;Pfannengericht;Deutsch/Alpenländisch;nein;Milcheiweiß;2;30;mittel;Herd;3.2;422
+R091;Grünkohl-Kichererbsen-Pfanne;Pfannengericht;Mediterran;ja;-;2;30;einfach;Herd;1.8;475
+R092;Paella-Style-Pfanne;Pfannengericht;Mediterran;ja;-;2;40;mittel;Herd;5.5;429
+R093;Gebratener Reis Asiatisch mit Ei & Gemüse;Pfannengericht;Asiatisch;nein;Ei, Sesam;2;25;einfach;Herd;1.8;438
+R094;Szechuan-Gemüsepfanne scharf;Pfannengericht;Asiatisch;ja;Sesam;2;25;mittel;Herd;1.8;435
+R095;Honig-Senf-Karotten-Pfanne;Pfannengericht;International;nein;Milcheiweiß, Senf;2;20;einfach;Herd;1.8;449
+R096;Kartoffel-Spinat-Pfanne mit Kreuzkümmel;Pfannengericht;Indisch;ja;-;2;35;einfach;Herd;1.8;384
+R097;Fenchel-Orangen-Pfanne Mediterran;Pfannengericht;Mediterran;ja;-;2;25;einfach;Herd;3.2;427
+R098;Zoodles-Pfanne mit Pesto;Pfannengericht;Mediterran;nein;Milcheiweiß, Nüsse;2;25;einfach;Herd;3.2;437
+R099;Süß-Sauer-Gemüsepfanne Asiatisch;Pfannengericht;Asiatisch;ja;Sesam;2;25;einfach;Herd;1.8;422
+R100;Kürbis-Salbei-Pfanne mit laktosefreier Butter;Pfannengericht;Mediterran;nein;Milcheiweiß, Nüsse;2;30;einfach;Herd;3.2;467
+R101;Erbsen-Minze-Pfanne mit Kartoffeln;Pfannengericht;International;nein;Milcheiweiß;2;30;einfach;Herd;1.8;412
+R102;Auberginen-Granatapfel-Pfanne Levantinisch;Pfannengericht;Levantinisch;ja;Sesam;2;30;einfach;Herd;3.2;441
+R103;Schwarzbohnen-Mais-Pfanne Tex-Mex;Pfannengericht;Mexikanisch;ja;-;2;20;einfach;Herd;1.8;462
+R104;Pilz-Risotto-Pfanne cremig;Pfannengericht;Mediterran;nein;Milcheiweiß;2;40;mittel;Herd;3.2;438
+R105;Gemüse-Thai-Rot-Curry-Pfanne;Pfannengericht;Asiatisch;ja;-;2;30;einfach;Herd;3.2;386
+R106;Kartoffel-Gratin laktosefrei;Auflauf;Deutsch/Alpenländisch;nein;Milcheiweiß;4;60;mittel;Backofen;3.2;455
+R107;Gemüse-Lasagne glutenfrei;Auflauf;Mediterran;nein;Milcheiweiß;4;60;mittel;Backofen, Herd;3.2;453
+R108;Ofengemüse Mediterran;Auflauf;Mediterran;ja;-;2;45;einfach;Backofen;1.8;505
+R109;Blumenkohl-Käse-Auflauf laktosefrei;Auflauf;International;nein;Milcheiweiß;2;45;einfach;Backofen, Herd;3.2;488
+R110;Süßkartoffel-Auflauf mit Pekannüssen;Auflauf;International;nein;Milcheiweiß, Nüsse;2;50;einfach;Backofen;3.2;538
+R111;Moussaka vegetarisch glutenfrei;Auflauf;Mediterran;nein;Milcheiweiß;4;65;schwer;Backofen, Herd;3.2;446
+R112;Ofenkürbis mit Feta & Granatapfel;Auflauf;Mediterran;nein;Milcheiweiß;2;40;einfach;Backofen;3.2;536
+R113;Gebackene Süßkartoffel gefüllt mit Bohnen;Auflauf;Mexikanisch;ja;-;2;50;einfach;Backofen;1.8;497
+R114;Ofen-Falafel-Teller;Auflauf;Levantinisch;ja;Sesam;2;45;mittel;Backofen;1.8;471
+R115;Rosenkohl-Auflauf mit laktosefreier Sahne;Auflauf;Deutsch/Alpenländisch;nein;Milcheiweiß;2;45;einfach;Backofen;3.2;537
+R116;Gemüse-Quiche glutenfrei (Mandelmehlboden);Auflauf;Mediterran;nein;Ei, Milcheiweiß, Nüsse;4;60;mittel;Backofen;3.2;468
+R117;Ofen-Risotto mit Pilzen;Auflauf;Mediterran;nein;Milcheiweiß;2;50;mittel;Backofen, Herd;3.2;502
+R118;Polenta-Auflauf mit Tomaten & Käse;Auflauf;Mediterran;ja;-;2;45;einfach;Backofen, Herd;1.8;518
+R119;Shepherd's Pie vegetarisch;Auflauf;International;nein;Milcheiweiß;4;60;mittel;Backofen, Herd;1.8;466
+R120;Ofengemüse Marokkanisch mit Harissa;Auflauf;International;ja;-;2;45;einfach;Backofen;1.8;435
+R121;Gefüllte Paprika mit Quinoa & Kichererbsen;Auflauf;Mediterran;ja;-;2;50;einfach;Backofen;1.8;532
+R122;Gefüllte Zucchini mit Reis & Gemüse;Auflauf;Mediterran;ja;-;2;50;einfach;Backofen;1.8;453
+R123;Auberginen-Parmigiana laktosefrei;Auflauf;Mediterran;nein;Milcheiweiß;4;60;mittel;Backofen, Herd;3.2;466
+R124;Kürbis-Gnocchi-Auflauf;Auflauf;Mediterran;nein;Milcheiweiß;2;40;einfach;Backofen, Herd;3.2;550
+R125;Wurzelgemüse-Auflauf mit Rosmarin;Auflauf;Deutsch/Alpenländisch;ja;-;2;50;einfach;Backofen;1.8;455
+R126;Reisnudel-Auflauf Asiatisch;Auflauf;Asiatisch;ja;Sesam;2;40;einfach;Backofen, Herd;1.8;508
+R127;Brokkoli-Reis-Auflauf cremig;Auflauf;International;nein;Milcheiweiß;2;45;einfach;Backofen, Herd;3.2;508
+R128;Kichererbsen-Spinat-Auflauf Indisch;Auflauf;Indisch;ja;-;2;40;einfach;Backofen, Herd;1.8;455
+R129;Pilz-Walnuss-Bratling im Ofen;Auflauf;International;nein;Ei, Nüsse;2;45;mittel;Backofen;3.2;533
+R130;Süßkartoffel-Schwarzbohnen-Enchiladas;Auflauf;Mexikanisch;ja;-;2;45;mittel;Backofen, Herd;3.2;437
+R131;Rotes Thai-Gemüsecurry;Curry;Asiatisch;ja;-;2;35;einfach;Herd;3.2;410
+R132;Grünes Thai-Gemüsecurry;Curry;Asiatisch;ja;-;2;35;einfach;Herd;3.2;399
+R133;Gelbes Curry mit Kartoffeln;Curry;Asiatisch;ja;-;2;40;einfach;Herd;1.8;401
+R134;Chana Masala (Kichererbsen-Curry);Curry;Indisch;ja;-;2;35;einfach;Herd;1.8;461
+R135;Rote-Linsen-Dal;Curry;Indisch;ja;-;2;30;einfach;Herd;1.8;473
+R136;Kürbis-Kokos-Curry;Curry;Asiatisch;ja;-;2;35;einfach;Herd;3.2;431
+R137;Aloo Gobi (Blumenkohl-Erbsen-Curry);Curry;Indisch;ja;-;2;35;einfach;Herd;1.8;431
+R138;Auberginen-Curry;Curry;Indisch;ja;-;2;35;einfach;Herd;1.8;400
+R139;Süßkartoffel-Erdnuss-Curry Afrikanisch;Curry;International;ja;Erdnuss;2;35;einfach;Herd;3.2;434
+R140;Massaman-Gemüse-Curry;Curry;Asiatisch;ja;Erdnuss;2;40;mittel;Herd;3.2;470
+R141;Panang-Gemüse-Curry;Curry;Asiatisch;ja;Erdnuss;2;35;mittel;Herd;3.2;417
+R142;Kichererbsen-Kokos-Curry;Curry;Indisch;ja;-;2;35;einfach;Herd;1.8;461
+R143;Spinat-Kokos-Curry;Curry;Indisch;ja;-;2;25;einfach;Herd;1.8;401
+R144;Pilz-Curry Cremig;Curry;Indisch;nein;Milcheiweiß;2;30;einfach;Herd;3.2;398
+R145;Karibisches Bohnen-Curry;Curry;International;ja;-;2;35;einfach;Herd;1.8;459
+R146;Rote-Bete-Curry;Curry;Indisch;ja;-;2;40;einfach;Herd;3.2;470
+R147;Grünkohl-Kichererbsen-Curry;Curry;International;ja;-;2;35;einfach;Herd;1.8;463
+R148;Butter-Kichererbsen-Curry (vegetarisch);Curry;Indisch;nein;Milcheiweiß;2;35;einfach;Herd;3.2;449
+R149;Jackfruit-Curry;Curry;Asiatisch;ja;-;2;35;mittel;Herd;3.2;477
+R150;Rotkohl-Apfel-Curry;Curry;International;ja;-;2;35;einfach;Herd;1.8;389
+R151;Tomaten-Basilikum-Pasta;Pasta;Mediterran;ja;-;2;25;einfach;Herd;1.8;567
+R152;Pasta Aglio e Olio glutenfrei;Pasta;Mediterran;ja;-;2;15;einfach;Herd;1.8;491
+R153;Pasta mit Pilzrahmsauce;Pasta;International;nein;Milcheiweiß;2;25;einfach;Herd;3.2;578
+R154;Pasta Puttanesca vegetarisch;Pasta;Mediterran;ja;-;2;25;einfach;Herd;1.8;485
+R155;Pasta mit Rucola-Pesto & Pinienkernen;Pasta;Mediterran;nein;Milcheiweiß, Nüsse;2;20;einfach;Herd, Mixer/Pürierstab;3.2;571
+R156;Linsennudel-Bolognese;Pasta;Mediterran;ja;-;2;35;einfach;Herd;1.8;598
+R157;Kürbis-Salbei-Pasta mit laktosefreier Butter;Pasta;Mediterran;nein;Milcheiweiß;2;35;einfach;Herd;3.2;525
+R158;Zitronen-Spargel-Pasta;Pasta;Mediterran;nein;Milcheiweiß;2;25;einfach;Herd;3.2;503
+R159;Pasta Primavera;Pasta;Mediterran;ja;-;2;30;einfach;Herd;1.8;499
+R160;Avocado-Pesto-Pasta;Pasta;International;ja;-;2;20;einfach;Herd, Mixer/Pürierstab;3.2;590
+R161;Mac and Cheese glutenfrei;Pasta;International;ja;Nüsse;2;30;mittel;Herd, Mixer/Pürierstab;3.2;569
+R162;Blumenkohl-Alfredo-Pasta;Pasta;International;ja;Nüsse;2;35;mittel;Herd, Mixer/Pürierstab;3.2;515
+R163;Erbsen-Minze-Pasta mit Ricotta;Pasta;Mediterran;nein;Milcheiweiß;2;25;einfach;Herd;3.2;496
+R164;Rote-Bete-Pasta mit Walnüssen;Pasta;International;ja;Nüsse;2;35;mittel;Herd, Mixer/Pürierstab;3.2;530
+R165;Pasta Arrabbiata;Pasta;Mediterran;ja;-;2;25;einfach;Herd;1.8;540
+R166;Kichererbsennudeln mit Spinat & Knoblauch;Pasta;Mediterran;ja;-;2;25;einfach;Herd;1.8;548
+R167;Pasta mit Ofentomaten & Oliven;Pasta;Mediterran;ja;-;2;35;einfach;Backofen, Herd;3.2;498
+R168;Pasta mit Zucchini-Käse-Sauce;Pasta;Mediterran;ja;-;2;30;einfach;Herd;3.2;573
+R169;Pasta mit Radicchio & laktosefreiem Gorgonzola;Pasta;Mediterran;nein;Milcheiweiß, Nüsse;2;30;mittel;Herd;5.5;559
+R170;Reisnudel-Pfanne mit Erdnusssauce Asiatisch;Pasta;Asiatisch;ja;Erdnuss;2;25;einfach;Herd;3.2;565
+R171;Ofenkartoffeln mit Kräuterdip;Snack;International;nein;Milcheiweiß;2;45;einfach;Backofen;1.8;187
+R172;Gebackener Blumenkohl mit Sumach;Snack;Levantinisch;ja;-;2;35;einfach;Backofen;1.8;153
+R173;Rote-Bete-Hummus;Snack;Levantinisch;ja;Sesam;4;10;einfach;Herd, Mixer/Pürierstab;1.8;224
+R174;Klassischer Hummus mit Tahini;Snack;Levantinisch;ja;Sesam;4;10;einfach;Mixer/Pürierstab;1.8;171
+R175;Süßkartoffel-Pommes aus dem Ofen;Snack;International;ja;-;2;35;einfach;Backofen;1.8;215
+R176;Gegrillter Mais mit Limette & Chili;Snack;Mexikanisch;ja;-;2;20;einfach;Herd;1.8;161
+R177;Gebratener Rosenkohl mit Ahornsirup;Snack;International;nein;Milcheiweiß;2;25;einfach;Herd;1.8;153
+R178;Knusprige geröstete Kichererbsen;Snack;International;ja;-;2;35;einfach;Backofen;1.8;245
+R179;Baba Ganoush (Auberginen-Dip);Snack;Levantinisch;ja;Sesam;4;35;einfach;Backofen, Mixer/Pürierstab;1.8;262
+R180;Guacamole;Snack;Mexikanisch;ja;-;2;10;einfach;Herd;3.2;224
+R181;Karotten-Ingwer-Dip;Snack;International;ja;-;4;25;einfach;Herd, Mixer/Pürierstab;1.8;219
+R182;Polenta-Sticks mit laktosefreiem Parmesan;Snack;Mediterran;nein;Milcheiweiß;2;35;mittel;Herd, Backofen;3.2;244
+R183;Gebackene Zucchini-Sticks mit Mandelpanade;Snack;International;nein;Ei, Nüsse;2;35;mittel;Backofen;3.2;162
+R184;Oliven-Tapenade;Snack;Mediterran;ja;-;4;10;einfach;Mixer/Pürierstab;3.2;213
+R185;Rote-Linsen-Cracker glutenfrei;Snack;International;ja;Sesam;4;35;mittel;Backofen;1.8;164
+R186;Schoko-Avocado-Mousse;Dessert;International;ja;-;2;70;einfach;Mixer/Pürierstab;3.2;359
+R187;Chia-Pudding mit Mango;Dessert;International;ja;-;2;125;einfach;Herd;3.2;261
+R188;Gebackene Äpfel mit Zimt & Walnüssen;Dessert;Deutsch/Alpenländisch;ja;Nüsse;2;40;einfach;Backofen;1.8;313
+R189;Bananen-Nicecream;Dessert;International;ja;-;2;5;einfach;Mixer/Pürierstab;1.8;375
+R190;Kokos-Reispudding;Dessert;Asiatisch;nein;Milcheiweiß;2;30;einfach;Herd;1.8;371
+R191;Mandelmehl-Brownies;Dessert;International;nein;Ei, Nüsse;4;40;mittel;Backofen;3.2;250
+R192;Beeren-Crumble mit Hafer-Streuseln;Dessert;International;nein;Milcheiweiß, Nüsse;4;45;einfach;Backofen;1.8;366
+R193;Dattel-Energiebällchen mit Kakao;Dessert;International;ja;Nüsse;4;15;einfach;Mixer/Pürierstab;3.2;264
+R194;Zitronen-Tarte mit Mandelboden;Dessert;Mediterran;nein;Ei, Milcheiweiß, Nüsse;4;55;schwer;Backofen;5.5;222
+R195;Panna Cotta laktosefrei mit Kokosmilch;Dessert;Mediterran;ja;-;2;190;mittel;Herd;3.2;352
+R196;Mango-Kokos-Pudding;Dessert;Asiatisch;ja;-;2;70;einfach;Mixer/Pürierstab;3.2;359
+R197;Karottenkuchen glutenfrei mit Frischkäse-Frosting;Dessert;International;nein;Ei, Nüsse;6;60;mittel;Backofen;3.2;320
+R198;Kürbis-Cheesecake laktosefrei;Dessert;International;nein;Ei, Nüsse;6;70;schwer;Backofen;5.5;259
+R199;Gebackene Birnen mit Honig & Pekannüssen;Dessert;International;nein;Nüsse;2;35;einfach;Backofen;1.8;325
+R200;Schoko-Kokos-Kugeln;Dessert;International;ja;-;4;15;einfach;Mixer/Pürierstab;1.8;349

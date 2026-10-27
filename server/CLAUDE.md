@@ -62,9 +62,13 @@ deploy/          Compose-Overlays, Traefik/Caddy, Proxmox-VM- und Bootstrap-Skri
 
 Phase 1 Backend fertig, 26 Tests grün: Auth, Profil, Rezept-Import, Plan-Generierung (DB → KI → Wiederholung), Startzeit, Offline-Sync, KI-Limits/Logging, Konto-Löschung.
 
+Homelab-Deployment läuft (Traefik + DNS-01, `kochplan.lab.syltwerk.de`, Let's-Encrypt-Zertifikat aktiv, `/healthz` grün).
+
+Rezeptbestand: erste Charge von 200 Rezepten importiert (`seed/recipes_batch1.json`, generiert + ins RecipeIn-Schema übersetzt via `tools/recipe_generation/`), Zutatenkatalog dafür von 24 auf 185 Einträge erweitert. Ziel insgesamt ca. 500 — weitere Chargen über dieselbe Pipeline (`generate_recipes.py` → `transform_to_recipein.py` → `import-recipes --dry-run`).
+
 Als Nächstes:
-1. Homelab-Deployment live nehmen, Sign in with Apple konfigurieren (Bundle-ID in `APPLE_AUDIENCES`).
-2. Rezeptbestand aufbauen im Format `seed/recipes.json` mit `--dry-run` zur Prüfung. Erste Charge 200 Rezepte, alle glutenfrei, laktosefrei, ohne Fleisch/Fisch/Soja. Ziel insgesamt ca. 500.
+1. Sign in with Apple konfigurieren (Bundle-ID in `APPLE_AUDIENCES`).
+2. Weitere Rezept-Chargen (ca. 300 fehlen noch bis Ziel 500).
 3. iOS-App (SwiftData-Cache über `/v1/recipes/sync` und `/v1/plans?since=`).
 
 Offen/später: Apple-Token-Revoke bei Kontolöschung, Push-Erinnerungen zur Startzeit, Web-App, Cookidoo-Microservice (inoffiziell, nur Eigennutzung, ToS-Risiko), StoreKit/Stripe-Abo, Fitness-Modul (Makros sind bereits je Rezept vorhanden).

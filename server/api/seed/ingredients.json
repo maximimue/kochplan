@@ -1,26 +1,1757 @@
 [
-  {"name": "Süßkartoffel", "base_unit": "kg", "prices": {"discount": 249, "standard": 299, "bio": 449}},
-  {"name": "Kichererbsen (Dose, abgetropft)", "base_unit": "kg", "prices": {"discount": 300, "standard": 380, "bio": 550}},
-  {"name": "Tahin", "base_unit": "kg", "prices": {"discount": 1100, "standard": 1400, "bio": 1800}, "allergens": ["sesam"]},
-  {"name": "Zitrone", "base_unit": "stk", "prices": {"discount": 35, "standard": 45, "bio": 70}},
-  {"name": "Olivenöl", "base_unit": "l", "prices": {"discount": 900, "standard": 1100, "bio": 1500}},
-  {"name": "Knoblauchzehe", "base_unit": "stk", "prices": {"discount": 10, "standard": 12, "bio": 20}},
-  {"name": "Rote Linsen", "base_unit": "kg", "prices": {"discount": 249, "standard": 329, "bio": 499}},
-  {"name": "Kokosmilch", "base_unit": "l", "prices": {"discount": 330, "standard": 450, "bio": 600}},
-  {"name": "Zwiebel", "base_unit": "kg", "prices": {"discount": 129, "standard": 169, "bio": 299}},
-  {"name": "Currypulver", "base_unit": "kg", "prices": {"discount": 1500, "standard": 2000, "bio": 3000}},
-  {"name": "Basmatireis", "base_unit": "kg", "prices": {"discount": 199, "standard": 279, "bio": 449}},
-  {"name": "Passierte Tomaten", "base_unit": "kg", "prices": {"discount": 99, "standard": 149, "bio": 249}},
-  {"name": "Babyspinat", "base_unit": "kg", "prices": {"discount": 499, "standard": 599, "bio": 899}},
-  {"name": "Risottoreis", "base_unit": "kg", "prices": {"discount": 249, "standard": 349, "bio": 549}},
-  {"name": "Erbsen (TK)", "base_unit": "kg", "prices": {"discount": 199, "standard": 249, "bio": 399}},
-  {"name": "Gemüsebrühe", "base_unit": "l", "prices": {"discount": 50, "standard": 80, "bio": 150}, "allergens": ["sellerie"]},
-  {"name": "Hefeflocken", "base_unit": "kg", "prices": {"discount": 2000, "standard": 2500, "bio": 3000}},
-  {"name": "Haferflocken (glutenfrei)", "base_unit": "kg", "prices": {"discount": 399, "standard": 499, "bio": 699}},
-  {"name": "Reisdrink", "base_unit": "l", "prices": {"discount": 119, "standard": 169, "bio": 219}},
-  {"name": "Banane", "base_unit": "stk", "prices": {"discount": 20, "standard": 25, "bio": 40}},
-  {"name": "Heidelbeeren (TK)", "base_unit": "kg", "prices": {"discount": 599, "standard": 699, "bio": 999}},
-  {"name": "Chiasamen", "base_unit": "kg", "prices": {"discount": 999, "standard": 1299, "bio": 1599}},
-  {"name": "Salz", "base_unit": "kg", "prices": {"discount": 39, "standard": 49, "bio": 99}},
-  {"name": "Pfeffer", "base_unit": "kg", "prices": {"discount": 2500, "standard": 3500, "bio": 5000}}
+  {
+    "name": "Süßkartoffel",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 249,
+      "standard": 299,
+      "bio": 449
+    }
+  },
+  {
+    "name": "Kichererbsen (Dose, abgetropft)",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 300,
+      "standard": 380,
+      "bio": 550
+    }
+  },
+  {
+    "name": "Tahin",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1100,
+      "standard": 1400,
+      "bio": 1800
+    },
+    "allergens": [
+      "sesam"
+    ]
+  },
+  {
+    "name": "Zitrone",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 35,
+      "standard": 45,
+      "bio": 70
+    }
+  },
+  {
+    "name": "Olivenöl",
+    "base_unit": "l",
+    "prices": {
+      "discount": 900,
+      "standard": 1100,
+      "bio": 1500
+    }
+  },
+  {
+    "name": "Knoblauchzehe",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 10,
+      "standard": 12,
+      "bio": 20
+    }
+  },
+  {
+    "name": "Rote Linsen",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 249,
+      "standard": 329,
+      "bio": 499
+    }
+  },
+  {
+    "name": "Kokosmilch",
+    "base_unit": "l",
+    "prices": {
+      "discount": 330,
+      "standard": 450,
+      "bio": 600
+    }
+  },
+  {
+    "name": "Zwiebel",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 129,
+      "standard": 169,
+      "bio": 299
+    }
+  },
+  {
+    "name": "Currypulver",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1500,
+      "standard": 2000,
+      "bio": 3000
+    }
+  },
+  {
+    "name": "Basmatireis",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 199,
+      "standard": 279,
+      "bio": 449
+    }
+  },
+  {
+    "name": "Passierte Tomaten",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 99,
+      "standard": 149,
+      "bio": 249
+    }
+  },
+  {
+    "name": "Babyspinat",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 499,
+      "standard": 599,
+      "bio": 899
+    }
+  },
+  {
+    "name": "Risottoreis",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 249,
+      "standard": 349,
+      "bio": 549
+    }
+  },
+  {
+    "name": "Erbsen (TK)",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 199,
+      "standard": 249,
+      "bio": 399
+    }
+  },
+  {
+    "name": "Gemüsebrühe",
+    "base_unit": "l",
+    "prices": {
+      "discount": 50,
+      "standard": 80,
+      "bio": 150
+    },
+    "allergens": [
+      "sellerie"
+    ]
+  },
+  {
+    "name": "Hefeflocken",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 2000,
+      "standard": 2500,
+      "bio": 3000
+    }
+  },
+  {
+    "name": "Haferflocken (glutenfrei)",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 399,
+      "standard": 499,
+      "bio": 699
+    }
+  },
+  {
+    "name": "Reisdrink",
+    "base_unit": "l",
+    "prices": {
+      "discount": 119,
+      "standard": 169,
+      "bio": 219
+    }
+  },
+  {
+    "name": "Banane",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 20,
+      "standard": 25,
+      "bio": 40
+    }
+  },
+  {
+    "name": "Heidelbeeren (TK)",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 599,
+      "standard": 699,
+      "bio": 999
+    }
+  },
+  {
+    "name": "Chiasamen",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 999,
+      "standard": 1299,
+      "bio": 1599
+    }
+  },
+  {
+    "name": "Salz",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 39,
+      "standard": 49,
+      "bio": 99
+    }
+  },
+  {
+    "name": "Pfeffer",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 2500,
+      "standard": 3500,
+      "bio": 5000
+    }
+  },
+  {
+    "name": "agar-agar",
+    "base_unit": "l",
+    "prices": {
+      "discount": 3000,
+      "standard": 4000,
+      "bio": 6000
+    }
+  },
+  {
+    "name": "ahornsirup",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1800,
+      "standard": 2200,
+      "bio": 2900
+    }
+  },
+  {
+    "name": "ananas",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 300,
+      "standard": 380,
+      "bio": 550
+    }
+  },
+  {
+    "name": "apfel",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 30,
+      "standard": 40,
+      "bio": 60
+    }
+  },
+  {
+    "name": "aubergine",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 90,
+      "standard": 120,
+      "bio": 180
+    }
+  },
+  {
+    "name": "avocado",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 90,
+      "standard": 120,
+      "bio": 180
+    }
+  },
+  {
+    "name": "backpulver (glutenfrei)",
+    "base_unit": "l",
+    "prices": {
+      "discount": 600,
+      "standard": 800,
+      "bio": 1200
+    }
+  },
+  {
+    "name": "basilikum",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 10,
+      "standard": 15,
+      "bio": 25
+    }
+  },
+  {
+    "name": "birne",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 35,
+      "standard": 45,
+      "bio": 70
+    }
+  },
+  {
+    "name": "blumenkohl",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 199,
+      "standard": 249,
+      "bio": 399
+    }
+  },
+  {
+    "name": "braune linsen",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 299,
+      "standard": 379,
+      "bio": 549
+    }
+  },
+  {
+    "name": "brokkoli",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 249,
+      "standard": 299,
+      "bio": 449
+    }
+  },
+  {
+    "name": "buchweizenmehl",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 349,
+      "standard": 449,
+      "bio": 649
+    }
+  },
+  {
+    "name": "butter laktosefrei",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1600,
+      "standard": 2000,
+      "bio": 2800
+    },
+    "allergens": [
+      "milch"
+    ]
+  },
+  {
+    "name": "cashewkerne",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1600,
+      "standard": 2000,
+      "bio": 2600
+    },
+    "allergens": [
+      "schalenfruechte"
+    ]
+  },
+  {
+    "name": "champignons",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 499,
+      "standard": 599,
+      "bio": 899
+    }
+  },
+  {
+    "name": "chiliflocken",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1800,
+      "standard": 2500,
+      "bio": 3500
+    }
+  },
+  {
+    "name": "chilipulver",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1800,
+      "standard": 2500,
+      "bio": 3500
+    }
+  },
+  {
+    "name": "chilisauce",
+    "base_unit": "l",
+    "prices": {
+      "discount": 600,
+      "standard": 800,
+      "bio": 1200
+    }
+  },
+  {
+    "name": "currypaste (fischsauce-frei)",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1600,
+      "standard": 2000,
+      "bio": 2800
+    }
+  },
+  {
+    "name": "currypaste grün (fischsauce-frei)",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1600,
+      "standard": 2000,
+      "bio": 2800
+    }
+  },
+  {
+    "name": "currypaste massaman (fischsauce-frei)",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1600,
+      "standard": 2000,
+      "bio": 2800
+    }
+  },
+  {
+    "name": "currypaste panang (fischsauce-frei)",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1600,
+      "standard": 2000,
+      "bio": 2800
+    }
+  },
+  {
+    "name": "currypaste rot (fischsauce-frei)",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1600,
+      "standard": 2000,
+      "bio": 2800
+    }
+  },
+  {
+    "name": "currypulver gelb",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1500,
+      "standard": 2000,
+      "bio": 3000
+    }
+  },
+  {
+    "name": "datteln",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 799,
+      "standard": 999,
+      "bio": 1399
+    }
+  },
+  {
+    "name": "dill",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 10,
+      "standard": 15,
+      "bio": 25
+    }
+  },
+  {
+    "name": "drachenfrucht gefroren",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1200,
+      "standard": 1500,
+      "bio": 1800
+    }
+  },
+  {
+    "name": "ei",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 30,
+      "standard": 40,
+      "bio": 60
+    }
+  },
+  {
+    "name": "erdnussmus",
+    "base_unit": "l",
+    "prices": {
+      "discount": 900,
+      "standard": 1200,
+      "bio": 1700
+    },
+    "allergens": [
+      "erdnuesse"
+    ]
+  },
+  {
+    "name": "erdnüsse",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 700,
+      "standard": 900,
+      "bio": 1300
+    },
+    "allergens": [
+      "erdnuesse"
+    ]
+  },
+  {
+    "name": "fenchel",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 90,
+      "standard": 120,
+      "bio": 180
+    }
+  },
+  {
+    "name": "feta laktosefrei",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1800,
+      "standard": 2200,
+      "bio": 2800
+    },
+    "allergens": [
+      "milch"
+    ]
+  },
+  {
+    "name": "frischkäse laktosefrei",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1400,
+      "standard": 1700,
+      "bio": 2200
+    },
+    "allergens": [
+      "milch"
+    ]
+  },
+  {
+    "name": "garam masala",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1800,
+      "standard": 2500,
+      "bio": 3500
+    }
+  },
+  {
+    "name": "gefrorene banane",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 20,
+      "standard": 25,
+      "bio": 40
+    }
+  },
+  {
+    "name": "gefrorene beeren",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 599,
+      "standard": 699,
+      "bio": 999
+    }
+  },
+  {
+    "name": "gemischte beeren",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 599,
+      "standard": 699,
+      "bio": 999
+    }
+  },
+  {
+    "name": "getrocknete cranberries",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1800,
+      "standard": 2200,
+      "bio": 2900
+    }
+  },
+  {
+    "name": "glutenfreie gnocchi",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 499,
+      "standard": 599,
+      "bio": 899
+    }
+  },
+  {
+    "name": "glutenfreie haferflocken",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 399,
+      "standard": 499,
+      "bio": 699
+    }
+  },
+  {
+    "name": "glutenfreie lasagneplatten",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 599,
+      "standard": 699,
+      "bio": 999
+    }
+  },
+  {
+    "name": "glutenfreies granola",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 899,
+      "standard": 1199,
+      "bio": 1699
+    }
+  },
+  {
+    "name": "granatapfelkerne",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1800,
+      "standard": 2200,
+      "bio": 2800
+    }
+  },
+  {
+    "name": "grüne bohnen",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 299,
+      "standard": 399,
+      "bio": 599
+    }
+  },
+  {
+    "name": "grüner spargel",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 699,
+      "standard": 899,
+      "bio": 1199
+    }
+  },
+  {
+    "name": "grünkohl",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 399,
+      "standard": 499,
+      "bio": 699
+    }
+  },
+  {
+    "name": "gurke",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 60,
+      "standard": 80,
+      "bio": 120
+    }
+  },
+  {
+    "name": "hafermilch",
+    "base_unit": "l",
+    "prices": {
+      "discount": 150,
+      "standard": 200,
+      "bio": 280
+    }
+  },
+  {
+    "name": "harissa",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1200,
+      "standard": 1500,
+      "bio": 2000
+    }
+  },
+  {
+    "name": "haselnüsse",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1600,
+      "standard": 2000,
+      "bio": 2600
+    },
+    "allergens": [
+      "schalenfruechte"
+    ]
+  },
+  {
+    "name": "hirse",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 349,
+      "standard": 449,
+      "bio": 649
+    }
+  },
+  {
+    "name": "hokkaido-kürbis",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 199,
+      "standard": 249,
+      "bio": 349
+    }
+  },
+  {
+    "name": "honig",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1400,
+      "standard": 1800,
+      "bio": 2600
+    }
+  },
+  {
+    "name": "ingwer",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 15,
+      "standard": 20,
+      "bio": 30
+    }
+  },
+  {
+    "name": "jackfruit (jung, aus der dose)",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 599,
+      "standard": 799,
+      "bio": 1099
+    }
+  },
+  {
+    "name": "kakaopulver",
+    "base_unit": "l",
+    "prices": {
+      "discount": 900,
+      "standard": 1200,
+      "bio": 1800
+    }
+  },
+  {
+    "name": "kapern",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1200,
+      "standard": 1600,
+      "bio": 2200
+    }
+  },
+  {
+    "name": "kardamom",
+    "base_unit": "l",
+    "prices": {
+      "discount": 3000,
+      "standard": 4000,
+      "bio": 6000
+    }
+  },
+  {
+    "name": "karotte",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 129,
+      "standard": 169,
+      "bio": 269
+    }
+  },
+  {
+    "name": "karotte geraspelt",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 15,
+      "standard": 20,
+      "bio": 30
+    }
+  },
+  {
+    "name": "kartoffel",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 99,
+      "standard": 139,
+      "bio": 249
+    }
+  },
+  {
+    "name": "kichererbsen",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 300,
+      "standard": 380,
+      "bio": 550
+    }
+  },
+  {
+    "name": "kichererbsenmehl",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 399,
+      "standard": 499,
+      "bio": 699
+    }
+  },
+  {
+    "name": "kichererbsennudeln",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 599,
+      "standard": 699,
+      "bio": 999
+    }
+  },
+  {
+    "name": "kidneybohnen",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 300,
+      "standard": 380,
+      "bio": 550
+    }
+  },
+  {
+    "name": "kirschtomaten",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 499,
+      "standard": 599,
+      "bio": 799
+    }
+  },
+  {
+    "name": "knoblauch",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 10,
+      "standard": 12,
+      "bio": 20
+    }
+  },
+  {
+    "name": "knollensellerie",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 199,
+      "standard": 249,
+      "bio": 399
+    },
+    "allergens": [
+      "sellerie"
+    ]
+  },
+  {
+    "name": "kokosaminos",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1800,
+      "standard": 2200,
+      "bio": 2900
+    }
+  },
+  {
+    "name": "kokosraspeln",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 899,
+      "standard": 1099,
+      "bio": 1499
+    }
+  },
+  {
+    "name": "kokosöl",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1200,
+      "standard": 1500,
+      "bio": 1900
+    }
+  },
+  {
+    "name": "koriander",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 10,
+      "standard": 15,
+      "bio": 25
+    }
+  },
+  {
+    "name": "kreuzkümmel",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1500,
+      "standard": 2000,
+      "bio": 3000
+    }
+  },
+  {
+    "name": "kurkuma",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1500,
+      "standard": 2000,
+      "bio": 3000
+    }
+  },
+  {
+    "name": "kümmel",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1500,
+      "standard": 2000,
+      "bio": 3000
+    }
+  },
+  {
+    "name": "kürbiskerne",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1400,
+      "standard": 1800,
+      "bio": 2400
+    }
+  },
+  {
+    "name": "kürbispüree",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 299,
+      "standard": 349,
+      "bio": 499
+    }
+  },
+  {
+    "name": "laktosefreie milch",
+    "base_unit": "l",
+    "prices": {
+      "discount": 150,
+      "standard": 200,
+      "bio": 280
+    },
+    "allergens": [
+      "milch"
+    ]
+  },
+  {
+    "name": "laktosefreie sahne",
+    "base_unit": "l",
+    "prices": {
+      "discount": 350,
+      "standard": 450,
+      "bio": 650
+    },
+    "allergens": [
+      "milch"
+    ]
+  },
+  {
+    "name": "laktosefreier frischkäse",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1400,
+      "standard": 1700,
+      "bio": 2200
+    },
+    "allergens": [
+      "milch"
+    ]
+  },
+  {
+    "name": "laktosefreier gorgonzola",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 2200,
+      "standard": 2800,
+      "bio": 3500
+    },
+    "allergens": [
+      "milch"
+    ]
+  },
+  {
+    "name": "laktosefreier hartkäse",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1800,
+      "standard": 2200,
+      "bio": 2800
+    },
+    "allergens": [
+      "milch"
+    ]
+  },
+  {
+    "name": "laktosefreier joghurt",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 350,
+      "standard": 450,
+      "bio": 650
+    },
+    "allergens": [
+      "milch"
+    ]
+  },
+  {
+    "name": "laktosefreier mozzarella",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1600,
+      "standard": 2000,
+      "bio": 2600
+    },
+    "allergens": [
+      "milch"
+    ]
+  },
+  {
+    "name": "laktosefreier parmesan",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 2500,
+      "standard": 3000,
+      "bio": 3800
+    },
+    "allergens": [
+      "milch"
+    ]
+  },
+  {
+    "name": "laktosefreier ricotta",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1400,
+      "standard": 1700,
+      "bio": 2200
+    },
+    "allergens": [
+      "milch"
+    ]
+  },
+  {
+    "name": "laktosefreier schmelzkäse",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1600,
+      "standard": 2000,
+      "bio": 2600
+    },
+    "allergens": [
+      "milch"
+    ]
+  },
+  {
+    "name": "lauch",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 150,
+      "standard": 200,
+      "bio": 300
+    }
+  },
+  {
+    "name": "leinsamen geschrotet",
+    "base_unit": "l",
+    "prices": {
+      "discount": 599,
+      "standard": 799,
+      "bio": 1099
+    }
+  },
+  {
+    "name": "limettensaft",
+    "base_unit": "l",
+    "prices": {
+      "discount": 600,
+      "standard": 800,
+      "bio": 1200
+    }
+  },
+  {
+    "name": "linsennudeln",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 599,
+      "standard": 699,
+      "bio": 999
+    }
+  },
+  {
+    "name": "mais",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 299,
+      "standard": 349,
+      "bio": 499
+    }
+  },
+  {
+    "name": "mais-tortillas (glutenfrei)",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 250,
+      "standard": 330,
+      "bio": 450
+    }
+  },
+  {
+    "name": "maiskolben",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 60,
+      "standard": 80,
+      "bio": 120
+    }
+  },
+  {
+    "name": "maisnudeln",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 499,
+      "standard": 599,
+      "bio": 899
+    }
+  },
+  {
+    "name": "mandelmehl",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1800,
+      "standard": 2200,
+      "bio": 2900
+    },
+    "allergens": [
+      "schalenfruechte"
+    ]
+  },
+  {
+    "name": "mandelmus",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1600,
+      "standard": 2000,
+      "bio": 2700
+    },
+    "allergens": [
+      "schalenfruechte"
+    ]
+  },
+  {
+    "name": "mandeln",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1600,
+      "standard": 2000,
+      "bio": 2700
+    },
+    "allergens": [
+      "schalenfruechte"
+    ]
+  },
+  {
+    "name": "mango",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 120,
+      "standard": 150,
+      "bio": 220
+    }
+  },
+  {
+    "name": "maronen gegart",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1200,
+      "standard": 1500,
+      "bio": 1900
+    }
+  },
+  {
+    "name": "milchreis (glutenfrei)",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 299,
+      "standard": 349,
+      "bio": 499
+    }
+  },
+  {
+    "name": "minze",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 10,
+      "standard": 15,
+      "bio": 25
+    }
+  },
+  {
+    "name": "muskatnuss",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 3000,
+      "standard": 4000,
+      "bio": 6000
+    }
+  },
+  {
+    "name": "oliven",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 899,
+      "standard": 1099,
+      "bio": 1499
+    }
+  },
+  {
+    "name": "orange",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 40,
+      "standard": 50,
+      "bio": 80
+    }
+  },
+  {
+    "name": "oregano",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1500,
+      "standard": 2000,
+      "bio": 3000
+    }
+  },
+  {
+    "name": "paprika",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 60,
+      "standard": 80,
+      "bio": 120
+    }
+  },
+  {
+    "name": "paprikapulver",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1200,
+      "standard": 1600,
+      "bio": 2500
+    }
+  },
+  {
+    "name": "pastinake",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 299,
+      "standard": 349,
+      "bio": 499
+    }
+  },
+  {
+    "name": "pekannüsse",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1800,
+      "standard": 2200,
+      "bio": 2900
+    },
+    "allergens": [
+      "schalenfruechte"
+    ]
+  },
+  {
+    "name": "petersilie",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 10,
+      "standard": 15,
+      "bio": 25
+    }
+  },
+  {
+    "name": "pflaumen",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 25,
+      "standard": 30,
+      "bio": 45
+    }
+  },
+  {
+    "name": "pilze",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 499,
+      "standard": 599,
+      "bio": 899
+    }
+  },
+  {
+    "name": "pinienkerne",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 2800,
+      "standard": 3400,
+      "bio": 4200
+    },
+    "allergens": [
+      "schalenfruechte"
+    ]
+  },
+  {
+    "name": "polenta/maisgrieß",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 249,
+      "standard": 299,
+      "bio": 449
+    }
+  },
+  {
+    "name": "quinoa",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 899,
+      "standard": 1099,
+      "bio": 1499
+    }
+  },
+  {
+    "name": "radicchio",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 599,
+      "standard": 699,
+      "bio": 999
+    }
+  },
+  {
+    "name": "reis",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 199,
+      "standard": 249,
+      "bio": 399
+    }
+  },
+  {
+    "name": "reis (gekocht, kalt)",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 199,
+      "standard": 249,
+      "bio": 399
+    }
+  },
+  {
+    "name": "reisessig",
+    "base_unit": "l",
+    "prices": {
+      "discount": 500,
+      "standard": 700,
+      "bio": 1000
+    }
+  },
+  {
+    "name": "reismehl",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 399,
+      "standard": 499,
+      "bio": 699
+    }
+  },
+  {
+    "name": "reisnudeln",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 399,
+      "standard": 499,
+      "bio": 699
+    }
+  },
+  {
+    "name": "reisnudeln-pasta",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 399,
+      "standard": 499,
+      "bio": 699
+    }
+  },
+  {
+    "name": "rettich",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 199,
+      "standard": 249,
+      "bio": 399
+    }
+  },
+  {
+    "name": "rosenkohl",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 299,
+      "standard": 399,
+      "bio": 599
+    }
+  },
+  {
+    "name": "rosmarin",
+    "base_unit": "l",
+    "prices": {
+      "discount": 10,
+      "standard": 15,
+      "bio": 25
+    }
+  },
+  {
+    "name": "rote bete",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 199,
+      "standard": 249,
+      "bio": 399
+    }
+  },
+  {
+    "name": "rote bete gekocht",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 299,
+      "standard": 399,
+      "bio": 599
+    }
+  },
+  {
+    "name": "rote linsen (gemahlen)",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 299,
+      "standard": 379,
+      "bio": 549
+    }
+  },
+  {
+    "name": "rote zwiebel",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 25,
+      "standard": 35,
+      "bio": 55
+    }
+  },
+  {
+    "name": "rotkohl",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 149,
+      "standard": 199,
+      "bio": 349
+    }
+  },
+  {
+    "name": "rucola",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 999,
+      "standard": 1199,
+      "bio": 1599
+    }
+  },
+  {
+    "name": "safran",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 25000,
+      "standard": 35000,
+      "bio": 50000
+    }
+  },
+  {
+    "name": "salbei",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 10,
+      "standard": 15,
+      "bio": 25
+    }
+  },
+  {
+    "name": "schnittlauch",
+    "base_unit": "l",
+    "prices": {
+      "discount": 10,
+      "standard": 15,
+      "bio": 25
+    }
+  },
+  {
+    "name": "schwarze bohnen",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 300,
+      "standard": 380,
+      "bio": 550
+    }
+  },
+  {
+    "name": "sellerie",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 150,
+      "standard": 200,
+      "bio": 300
+    },
+    "allergens": [
+      "sellerie"
+    ]
+  },
+  {
+    "name": "senf",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1200,
+      "standard": 1600,
+      "bio": 2200
+    },
+    "allergens": [
+      "senf"
+    ]
+  },
+  {
+    "name": "sesam",
+    "base_unit": "l",
+    "prices": {
+      "discount": 900,
+      "standard": 1200,
+      "bio": 1700
+    },
+    "allergens": [
+      "sesam"
+    ]
+  },
+  {
+    "name": "sesamöl",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1400,
+      "standard": 1800,
+      "bio": 2400
+    },
+    "allergens": [
+      "sesam"
+    ]
+  },
+  {
+    "name": "sojasauce-alternative (kokosaminos)",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1800,
+      "standard": 2200,
+      "bio": 2900
+    }
+  },
+  {
+    "name": "spinat",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 399,
+      "standard": 499,
+      "bio": 699
+    }
+  },
+  {
+    "name": "sumach",
+    "base_unit": "l",
+    "prices": {
+      "discount": 2500,
+      "standard": 3500,
+      "bio": 5000
+    }
+  },
+  {
+    "name": "thymian",
+    "base_unit": "l",
+    "prices": {
+      "discount": 10,
+      "standard": 15,
+      "bio": 25
+    }
+  },
+  {
+    "name": "tomate",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 35,
+      "standard": 45,
+      "bio": 70
+    }
+  },
+  {
+    "name": "tomaten",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 249,
+      "standard": 299,
+      "bio": 449
+    }
+  },
+  {
+    "name": "tomaten gehackt",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 149,
+      "standard": 199,
+      "bio": 299
+    }
+  },
+  {
+    "name": "tomatensauce",
+    "base_unit": "l",
+    "prices": {
+      "discount": 199,
+      "standard": 249,
+      "bio": 349
+    }
+  },
+  {
+    "name": "vanille",
+    "base_unit": "l",
+    "prices": {
+      "discount": 4000,
+      "standard": 6000,
+      "bio": 9000
+    }
+  },
+  {
+    "name": "walnüsse",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 1400,
+      "standard": 1800,
+      "bio": 2400
+    },
+    "allergens": [
+      "schalenfruechte"
+    ]
+  },
+  {
+    "name": "wasser",
+    "base_unit": "l",
+    "prices": {
+      "discount": 0,
+      "standard": 0,
+      "bio": 0
+    }
+  },
+  {
+    "name": "wassermelone",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 99,
+      "standard": 149,
+      "bio": 249
+    }
+  },
+  {
+    "name": "weiße bohnen",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 300,
+      "standard": 380,
+      "bio": 550
+    }
+  },
+  {
+    "name": "weißkohl",
+    "base_unit": "kg",
+    "prices": {
+      "discount": 99,
+      "standard": 149,
+      "bio": 249
+    }
+  },
+  {
+    "name": "zimt",
+    "base_unit": "l",
+    "prices": {
+      "discount": 1500,
+      "standard": 2000,
+      "bio": 3000
+    }
+  },
+  {
+    "name": "zitronengras",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 20,
+      "standard": 25,
+      "bio": 35
+    }
+  },
+  {
+    "name": "zitronensaft",
+    "base_unit": "l",
+    "prices": {
+      "discount": 500,
+      "standard": 700,
+      "bio": 1000
+    }
+  },
+  {
+    "name": "zucchini",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 70,
+      "standard": 90,
+      "bio": 140
+    }
+  },
+  {
+    "name": "zucchini (als zoodles)",
+    "base_unit": "stk",
+    "prices": {
+      "discount": 70,
+      "standard": 90,
+      "bio": 140
+    }
+  },
+  {
+    "name": "öl zum braten",
+    "base_unit": "l",
+    "prices": {
+      "discount": 900,
+      "standard": 1100,
+      "bio": 1500
+    }
+  }
 ]
