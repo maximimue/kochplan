@@ -1,0 +1,29 @@
+# Homelab: Traefik mit Let's Encrypt per DNS-01.
+# Funktioniert ohne Portfreigabe — der Server muss aus dem Internet nicht erreichbar sein.
+# Bewusst KEIN Docker-Socket: Routing kommt aus der statischen Datei deploy/traefik/dynamic.yml.
+services:
+  traefik:
+    image: traefik:v3.7
+    restart: unless-stopped
+    command:
+      - --entrypoints.web.address=:80
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entrypoints.websecure.address=:443
+      - --providers.file.filename=/etc/traefik/dynamic.yml
+      - --certificatesresolvers.le.acme.email=${ACME_EMAIL:?ACME_EMAIL fehlt in .env}
+      - --certificatesresolvers.le.acme.storage=/letsencrypt/acme.json
+      - --certificatesresolvers.le.acme.dnschallenge.provider=${DNS_PROVIDER:?DNS_PROVIDER fehlt in .env}
+      # öffentliche Resolver für den Propagation-Check (lokaler Pi-hole/FritzBox kennt den TXT-Record evtl. nicht)
+      - --certificatesresolvers.le.acme.dnschallenge.resolvers=1.1.1.1:53,9.9.9.9:53
+      - --log.level=INFO
+    ports: ["80:80", "443:443"]
+    environment:
+      API_DOMAIN: ${API_DOMAIN:?API_DOMAIN fehlt in .env}
+    env_file: .env.dns          # nur DNS-API-Credentials, keine App-Secrets
+    volumes:
+      - ./deploy/traefik/dynamic.yml:/etc/traefik/dynamic.yml:ro
+      - letsencrypt:/letsencrypt
+    depends_on: [api]
+
+volumes:
+  letsencrypt:

@@ -1,0 +1,23 @@
+# Go-Template: API_DOMAIN kommt aus der Container-Umgebung
+http:
+  routers:
+    api:
+      rule: Host(`{{ env "API_DOMAIN" }}`)
+      entryPoints: [websecure]
+      service: api
+      middlewares: [secure-headers]
+      tls:
+        certResolver: le
+  middlewares:
+    secure-headers:
+      headers:
+        stsSeconds: 31536000
+        contentTypeNosniff: true
+  services:
+    api:
+      loadBalancer:
+        servers:
+          - url: http://api:8000
+        healthCheck:
+          path: /healthz
+          interval: 30s

@@ -1,0 +1,44 @@
+{
+  "errors": {
+    "unauthorized": "Nicht angemeldet oder Sitzung abgelaufen.",
+    "invalid_token": "Anmeldung konnte nicht überprüft werden.",
+    "provider_not_configured": "Anmeldung über {provider} ist nicht konfiguriert.",
+    "dev_login_disabled": "Entwickler-Login ist deaktiviert.",
+    "invalid_refresh_token": "Sitzung ungültig, bitte erneut anmelden.",
+    "unknown_value": "Unbekannter Wert für {field}: {value}",
+    "not_found": "{what} nicht gefunden.",
+    "ai_unavailable": "KI-Rezepte sind gerade nicht verfügbar.",
+    "ai_rate_limited": "Zu viele KI-Anfragen. Bitte kurz warten.",
+    "ai_monthly_limit": "Dein monatliches Kontingent an KI-Rezepten ist aufgebraucht.",
+    "ai_invalid_output": "Die KI hat kein gültiges Rezept geliefert.",
+    "ai_constraint_violation": "Das KI-Rezept passte nicht zu deinen Einstellungen.",
+    "sync_conflict": "Auf dem Server gibt es eine neuere Version dieses Plans."
+  },
+  "warnings": {
+    "no_matching_recipes": "Für {date} ({meal}) wurde kein passendes Rezept gefunden.",
+    "recipe_repeated": "„{title}“ kommt diese Woche mehrfach vor.",
+    "over_budget": "Der Plan liegt {amount} über deinem Budget.",
+    "ai_skipped": "KI-Rezepte wurden übersprungen: {reason}",
+    "no_appliances": "Du hast noch keine Küchengeräte angegeben."
+  },
+  "labels": {
+    "appliances": {
+      "herd": "Herd", "backofen": "Backofen", "mikrowelle": "Mikrowelle", "thermomix": "Thermomix",
+      "airfryer": "Heißluftfritteuse", "wasserkocher": "Wasserkocher", "mixer": "Standmixer",
+      "dampfgarer": "Dampfgarer", "slowcooker": "Slow Cooker", "grill": "Grill"
+    },
+    "allergens": {
+      "gluten": "Gluten", "krebstiere": "Krebstiere", "eier": "Eier", "fisch": "Fisch",
+      "erdnuesse": "Erdnüsse", "soja": "Soja", "milch": "Milch", "schalenfruechte": "Schalenfrüchte",
+      "sellerie": "Sellerie", "senf": "Senf", "sesam": "Sesam", "sulfite": "Sulfite",
+      "lupinen": "Lupinen", "weichtiere": "Weichtiere", "laktose": "Laktose"
+    },
+    "diet_tags": { "vegan": "Vegan", "vegetarisch": "Vegetarisch", "pescetarisch": "Pescetarisch" },
+    "meal_types": { "fruehstueck": "Frühstück", "mittag": "Mittagessen", "abend": "Abendessen", "snack": "Snack" },
+    "supermarkets": {
+      "aldi": "Aldi", "lidl": "Lidl", "netto": "Netto", "penny": "Penny", "rewe": "Rewe",
+      "edeka": "Edeka", "kaufland": "Kaufland", "denns": "denn's Biomarkt", "alnatura": "Alnatura",
+      "bio_company": "Bio Company"
+    }
+  }
+}

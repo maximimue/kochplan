@@ -1,0 +1,102 @@
+[
+  {
+    "slug": "ofen-suesskartoffeln-kichererbsen-tahin",
+    "title": "Ofen-Süßkartoffeln mit Kichererbsen und Zitronen-Tahin",
+    "summary": "Knusprige Süßkartoffeln und geröstete Kichererbsen aus dem Ofen mit cremiger Tahin-Sauce.",
+    "servings": 2, "prep_minutes": 10, "cook_minutes": 5, "passive_minutes": 30,
+    "kcal": 640, "protein_g": 19, "fat_g": 27, "carbs_g": 76,
+    "appliances": ["backofen"], "allergens": ["sesam"],
+    "tags": ["vegan", "vegetarisch", "glutenfrei", "laktosefrei", "sojafrei"],
+    "meal_types": ["mittag", "abend"],
+    "ingredients": [
+      {"name": "Süßkartoffel", "quantity": 600, "unit": "g"},
+      {"name": "Kichererbsen (Dose, abgetropft)", "quantity": 240, "unit": "g"},
+      {"name": "Olivenöl", "quantity": 2, "unit": "el"},
+      {"name": "Tahin", "quantity": 40, "unit": "g"},
+      {"name": "Zitrone", "quantity": 1, "unit": "stk", "note": "Saft"},
+      {"name": "Knoblauchzehe", "quantity": 1, "unit": "stk"},
+      {"name": "Salz", "unit": "prise"}
+    ],
+    "steps": [
+      {"text": "Backofen auf 210 °C Umluft vorheizen. Süßkartoffeln in 2 cm Würfel schneiden.", "minutes": 5, "appliance": "backofen"},
+      {"text": "Süßkartoffeln und Kichererbsen mit Öl und Salz mischen, auf ein Blech geben und 30 Minuten rösten, nach der Hälfte wenden.", "minutes": 30, "appliance": "backofen"},
+      {"text": "Tahin, Zitronensaft, gepressten Knoblauch und 3–4 EL Wasser glatt rühren, salzen.", "minutes": 5},
+      {"text": "Ofengemüse anrichten und mit der Sauce beträufeln.", "minutes": 2}
+    ]
+  },
+  {
+    "slug": "rote-linsen-curry-kokos",
+    "title": "Rote-Linsen-Curry mit Kokosmilch und Spinat",
+    "summary": "Sämiges Dal mit Tomate, Kokos und frischem Spinat, dazu Basmatireis.",
+    "servings": 2, "prep_minutes": 10, "cook_minutes": 25, "passive_minutes": 0,
+    "kcal": 720, "protein_g": 26, "fat_g": 24, "carbs_g": 98,
+    "appliances": ["herd"], "allergens": [],
+    "tags": ["vegan", "vegetarisch", "glutenfrei", "laktosefrei", "sojafrei", "meal-prep"],
+    "meal_types": ["mittag", "abend"],
+    "ingredients": [
+      {"name": "Rote Linsen", "quantity": 150, "unit": "g"},
+      {"name": "Basmatireis", "quantity": 150, "unit": "g"},
+      {"name": "Kokosmilch", "quantity": 200, "unit": "ml"},
+      {"name": "Passierte Tomaten", "quantity": 200, "unit": "g"},
+      {"name": "Zwiebel", "quantity": 100, "unit": "g"},
+      {"name": "Knoblauchzehe", "quantity": 2, "unit": "stk"},
+      {"name": "Currypulver", "quantity": 6, "unit": "g", "note": "ca. 2 TL"},
+      {"name": "Babyspinat", "quantity": 100, "unit": "g"},
+      {"name": "Olivenöl", "quantity": 1, "unit": "el"}
+    ],
+    "steps": [
+      {"text": "Reis nach Packungsanweisung garen.", "minutes": 15, "appliance": "herd"},
+      {"text": "Zwiebel und Knoblauch fein hacken und im Öl glasig dünsten, Curry kurz mitrösten.", "minutes": 5, "appliance": "herd"},
+      {"text": "Linsen, Tomaten, Kokosmilch und 300 ml Wasser zugeben und 15 Minuten köcheln, bis die Linsen zerfallen.", "minutes": 15, "appliance": "herd"},
+      {"text": "Spinat unterheben, salzen und mit Reis servieren.", "minutes": 2}
+    ]
+  },
+  {
+    "slug": "erbsen-risotto-thermomix",
+    "title": "Erbsen-Risotto mit Zitrone",
+    "summary": "Cremiges Risotto ohne Käse — Hefeflocken und Zitrone sorgen für Würze.",
+    "servings": 2, "prep_minutes": 5, "cook_minutes": 5, "passive_minutes": 18,
+    "kcal": 560, "protein_g": 16, "fat_g": 12, "carbs_g": 92,
+    "appliances": ["thermomix"], "allergens": [],
+    "tags": ["vegan", "vegetarisch", "glutenfrei", "laktosefrei", "sojafrei"],
+    "meal_types": ["mittag", "abend"],
+    "ingredients": [
+      {"name": "Risottoreis", "quantity": 180, "unit": "g"},
+      {"name": "Erbsen (TK)", "quantity": 150, "unit": "g"},
+      {"name": "Zwiebel", "quantity": 60, "unit": "g"},
+      {"name": "Olivenöl", "quantity": 20, "unit": "ml"},
+      {"name": "Gemüsebrühe", "quantity": 550, "unit": "ml"},
+      {"name": "Hefeflocken", "quantity": 15, "unit": "g"},
+      {"name": "Zitrone", "quantity": 0.5, "unit": "stk", "note": "Abrieb und Saft"}
+    ],
+    "steps": [
+      {"text": "Zwiebel in den Mixtopf geben und zerkleinern.", "appliance": "thermomix", "thermomix": {"time_s": 5, "speed": "5"}},
+      {"text": "Öl zugeben und andünsten.", "appliance": "thermomix", "thermomix": {"time_s": 180, "temp_c": 120, "speed": "1"}},
+      {"text": "Reis zugeben und anschwitzen.", "appliance": "thermomix", "thermomix": {"time_s": 120, "temp_c": 120, "speed": "Linkslauf 1"}},
+      {"text": "Brühe zugeben und ohne Messbecher garen, Gareinsatz als Spritzschutz auflegen.", "minutes": 13, "appliance": "thermomix", "thermomix": {"time_s": 780, "temp_c": 100, "speed": "Linkslauf Löffel"}},
+      {"text": "Erbsen zugeben und weitergaren.", "minutes": 5, "appliance": "thermomix", "thermomix": {"time_s": 300, "temp_c": 100, "speed": "Linkslauf Löffel"}},
+      {"text": "Hefeflocken, Zitronenabrieb und -saft unterrühren, 2 Minuten ruhen lassen.", "minutes": 2}
+    ]
+  },
+  {
+    "slug": "overnight-oats-heidelbeere",
+    "title": "Overnight Oats mit Heidelbeeren",
+    "summary": "Am Vorabend angerührt, morgens fertig — mit glutenfreien Haferflocken.",
+    "servings": 1, "prep_minutes": 5, "cook_minutes": 0, "passive_minutes": 0,
+    "kcal": 430, "protein_g": 11, "fat_g": 10, "carbs_g": 72,
+    "appliances": [], "allergens": [],
+    "tags": ["vegan", "vegetarisch", "glutenfrei", "laktosefrei", "sojafrei", "schnell"],
+    "meal_types": ["fruehstueck"],
+    "ingredients": [
+      {"name": "Haferflocken (glutenfrei)", "quantity": 60, "unit": "g"},
+      {"name": "Reisdrink", "quantity": 180, "unit": "ml"},
+      {"name": "Chiasamen", "quantity": 10, "unit": "g", "note": "ca. 1 EL"},
+      {"name": "Banane", "quantity": 0.5, "unit": "stk"},
+      {"name": "Heidelbeeren (TK)", "quantity": 80, "unit": "g"}
+    ],
+    "steps": [
+      {"text": "Haferflocken, Chiasamen und Reisdrink verrühren, zerdrückte Banane unterheben.", "minutes": 3},
+      {"text": "Über Nacht abgedeckt im Kühlschrank quellen lassen, morgens Heidelbeeren darauf geben.", "minutes": 2}
+    ]
+  }
+]
