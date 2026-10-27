@@ -68,6 +68,7 @@ tools/recipe_generation/   Generator (generate_recipes.py) + Transform ins Recip
 - Kein Supabase/Firebase: ID-Tokens werden direkt geprüft. Keine automatische Kontoverknüpfung über gleiche E-Mail (Takeover-Risiko).
 - Postgres 16 im Container statt Oracle Autonomous DB.
 - Kosten sind grob je Preis-Tier (`discount`/`standard`/`bio`), keine Echtzeitpreise.
+- `/openapi.json` wird über `app.openapi = _custom_openapi` (in `main.py`) nachbearbeitet: OpenAPI-3.1-Nullable (`anyOf` mit `null`) wird zu 3.0-Stil (`nullable: true`) konvertiert, Dokument als `3.0.3` deklariert — `swift-openapi-generator` 1.14.3 verwirft 3.1-Nullable-Felder sonst komplett. Betrifft nur die ausgelieferte Spezifikation, nicht die Pydantic-Schemas selbst.
 - MVP-Hosting: Proxmox-VM im Homelab (Debian 13), nur LAN/NetBird erreichbar, `ENV=dev`. Später Oracle Always Free: dort aktuell 2 OCPU / 12 GB A1, Home-Region Frankfurt, Idle-Reclamation beachten (PAYG-Upgrade).
 
 ## Stand
