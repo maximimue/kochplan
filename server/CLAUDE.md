@@ -4,6 +4,8 @@ Backend einer Essensplaner-App: Wochenplan aus Supermarkt, Küchengeräten, Alle
 
 Sprache: Antworten und Code-Kommentare auf Deutsch, Bezeichner auf Englisch. Antworten knapp und technisch.
 
+Teil des Monorepos `kochplan` (github.com/maximimue/kochplan, public). Dieses Dokument gilt für `server/`; `ios/` und `web/` folgen später als eigene Top-Level-Ordner mit eigenem CLAUDE.md.
+
 ## Befehle (alle in `api/`)
 
 ```bash
@@ -13,11 +15,17 @@ ENV=dev DEV_LOGIN_ENABLED=true uvicorn app.main:app --reload   # Swagger: /docs,
 alembic revision --autogenerate -m "..."               # danach Migration lesen und prüfen!
 alembic upgrade head
 python -m app.cli import-ingredients seed/ingredients.json
-python -m app.cli import-recipes seed/recipes.json [--dry-run]
+python -m app.cli import-recipes seed/recipes_batch1.json [--dry-run]   # echter Rezeptbestand
 python -m app.cli usage [--month 2026-10]              # KI-Kosten je User
 ```
 
 Deployment: `docker compose up -d --build`. Der Overlay wird über `COMPOSE_FILE` in `.env` gewählt: `deploy/compose.traefik.yml` (Homelab, DNS-01, nur LAN/NetBird) oder `deploy/compose.caddy.yml` (Oracle, öffentlich).
+
+### Laufende Instanz (Homelab)
+
+- VM `kochplan` auf Proxmox, erreichbar unter `kochplan.lab.syltwerk.de` (Let's-Encrypt via Traefik) bzw. intern `10.10.0.60`, per NetBird-Mesh (Route `10.10.0.0/24` über `lab-core-01`) auch ohne Pi-hole-DNS per `curl --resolve kochplan.lab.syltwerk.de:443:10.10.0.60 ...` erreichbar.
+- SSH: `root@10.10.0.60` (Key `s01-infra-admin` ist auf der VM hinterlegt). Deploy-Dir: `~/kochplan` (Git-Checkout von `github.com/maximimue/kochplan`, Repo ist public).
+- Update-Zyklus: lokal committen + pushen, dann auf der VM `cd ~/kochplan && git pull --ff-only && cd server && docker compose up -d --build`.
 
 ## Struktur
 
@@ -32,9 +40,12 @@ api/app/
   auth/          Apple/Google-ID-Token-Prüfung (JWKS), eigene JWTs, Refresh-Rotation
   services/      planner, ai, recipes (Import/Kosten), schedule (Startzeit)
   routers/       auth, me, meta, recipes, plans   (Prefix /v1)
-api/seed/        Beispiel-Zutaten und -Rezepte im Importformat
+api/seed/        ingredients.json (Katalog) + recipes_batch1.json (echter Bestand, 200 Stk.)
+                 recipes.json (NUR 4 Test-Fixtures, siehe Regeln unten — nicht erweitern)
 api/tests/       pytest, ASGI-Client gegen echtes Postgres
 deploy/          Compose-Overlays, Traefik/Caddy, Proxmox-VM- und Bootstrap-Skripte, Backup
+tools/recipe_generation/   Generator (generate_recipes.py) + Transform ins RecipeIn-Schema
+                 (transform_to_recipein.py) für weitere Rezept-Chargen
 ```
 
 ## Regeln
@@ -49,6 +60,7 @@ deploy/          Compose-Overlays, Traefik/Caddy, Proxmox-VM- und Bootstrap-Skri
 - Neue Endpunkte brauchen Tests. KI-Tests laufen mit `httpx.MockTransport`, ohne echte API-Calls.
 - Traefik bekommt keinen Docker-Socket, das Routing kommt aus `deploy/traefik/dynamic.yml`.
 - `.env` und `.env.dns` niemals committen.
+- `seed/recipes.json` (4 Rezepte) ist fest in `tests/test_plans.py` verdrahtet (exakte Titel-Assertions) — das ist die Test-Fixture, nicht der Rezeptbestand. Der echte Bestand liegt in `seed/recipes_batch1.json` (+ künftige `recipes_batch2.json` usw.) und wird nur in die laufende Instanz importiert, nie in die Tests.
 
 ## Getroffene Entscheidungen (nicht neu aufrollen ohne Anlass)
 
