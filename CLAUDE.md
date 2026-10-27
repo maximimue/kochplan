@@ -8,7 +8,8 @@ Sprache: Antworten und Code-Kommentare auf Deutsch, Bezeichner auf Englisch. Ant
 
 ```bash
 pytest -q                                              # braucht Postgres-DB kochplan_test (kochplan/kochplan@localhost)
-ENV=dev DEV_LOGIN_ENABLED=true uvicorn app.main:app --reload   # Swagger: /docs
+pytest -q -x tests/test_plans.py::test_name            # einzelner Test
+ENV=dev DEV_LOGIN_ENABLED=true uvicorn app.main:app --reload   # Swagger: /docs, POST /v1/auth/dev {email} für Login ohne Apple/Google
 alembic revision --autogenerate -m "..."               # danach Migration lesen und prüfen!
 alembic upgrade head
 python -m app.cli import-ingredients seed/ingredients.json
