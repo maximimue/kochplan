@@ -45,4 +45,4 @@ qm set "$VMID" --ciuser "$CIUSER" --sshkeys "$SSH_KEY" --ipconfig0 "$IPCFG" ${NA
 qm start "$VMID"
 
 echo "VM $VMID ($NAME) gestartet. Nach ~1 Min: ssh $CIUSER@<IP>"
-echo "Dann: git clone <repo> kochplan-server && sudo bash kochplan-server/deploy/homelab/bootstrap-debian.sh"
+echo "Dann: git clone <repo> kochplan && sudo bash kochplan/server/deploy/homelab/bootstrap-debian.sh"

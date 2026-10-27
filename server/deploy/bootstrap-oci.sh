@@ -28,6 +28,6 @@ dpkg-reconfigure -f noninteractive unattended-upgrades
 
 # Tägliches DB-Backup
 install -m 755 "$(dirname "$0")/backup.sh" /usr/local/bin/kochplan-backup 2>/dev/null || true
-echo "15 3 * * * root COMPOSE_DIR=/home/ubuntu/kochplan-server /usr/local/bin/kochplan-backup >> /var/log/kochplan-backup.log 2>&1" > /etc/cron.d/kochplan-backup
+echo "15 3 * * * root COMPOSE_DIR=/home/ubuntu/kochplan/server /usr/local/bin/kochplan-backup >> /var/log/kochplan-backup.log 2>&1" > /etc/cron.d/kochplan-backup
 
-echo "Fertig. Neu einloggen (docker-Gruppe), dann: cd kochplan-server && cp .env.example .env (COMPOSE_FILE auf compose.caddy.yml setzen) && docker compose up -d --build"
+echo "Fertig. Neu einloggen (docker-Gruppe), dann: cd kochplan/server && cp .env.example .env (COMPOSE_FILE auf compose.caddy.yml setzen) && docker compose up -d --build"

@@ -3,7 +3,7 @@
 # BACKUP_DIR auf einen NFS-Mount (TrueNAS) oder rclone/restic-Ziel legen, damit das Backup nicht auf derselben Disk liegt.
 set -euo pipefail
 DIR=${BACKUP_DIR:-/var/backups/kochplan}
-COMPOSE_DIR=${COMPOSE_DIR:-/home/ubuntu/kochplan-server}
+COMPOSE_DIR=${COMPOSE_DIR:-/home/ubuntu/kochplan/server}
 KEEP_DAYS=${KEEP_DAYS:-14}
 mkdir -p "$DIR"
 cd "$COMPOSE_DIR"
