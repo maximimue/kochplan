@@ -226,7 +226,8 @@ class SlotIn(BaseModel):
 
 class GeneratePlanIn(BaseModel):
     week_start: dt.date
-    slots: list[SlotIn] = Field(min_length=1, max_length=28)
+    # 7 Tage × max. 5 Mahlzeiten/Tag (Frühstück/Snack/Mittag/Snack/Abend), siehe iOS-Mahlzeiten-Editor.
+    slots: list[SlotIn] = Field(min_length=1, max_length=35)
     use_ai: bool = True
     seed: int | None = None
 
