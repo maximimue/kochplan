@@ -29,7 +29,7 @@
     "appliances": {
       "herd": "Herd", "backofen": "Backofen", "mikrowelle": "Mikrowelle", "thermomix": "Thermomix",
       "airfryer": "Heißluftfritteuse", "wasserkocher": "Wasserkocher", "mixer": "Standmixer",
-      "dampfgarer": "Dampfgarer", "slowcooker": "Slow Cooker", "grill": "Grill"
+      "dampfgarer": "Dampfgarer", "slowcooker": "Slow Cooker", "grill": "Grill", "waffeleisen": "Waffeleisen"
     },
     "allergens": {
       "gluten": "Gluten", "krebstiere": "Krebstiere", "eier": "Eier", "fisch": "Fisch",

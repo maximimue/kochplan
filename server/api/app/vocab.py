@@ -2,7 +2,7 @@
 
 APPLIANCES = {
     "herd", "backofen", "mikrowelle", "thermomix", "airfryer",
-    "wasserkocher", "mixer", "dampfgarer", "slowcooker", "grill",
+    "wasserkocher", "mixer", "dampfgarer", "slowcooker", "grill", "waffeleisen",
 }
 
 # 14 EU-Hauptallergene (LMIV) + Laktose als eigene Unverträglichkeit

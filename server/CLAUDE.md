@@ -20,6 +20,7 @@ alembic revision --autogenerate -m "..."               # danach Migration lesen 
 alembic upgrade head
 python -m app.cli import-ingredients seed/ingredients.json
 python -m app.cli import-recipes seed/recipes_batch1.json [--dry-run]   # echter Rezeptbestand
+python -m app.cli import-recipes seed/recipes_batch2.json [--dry-run]   # Charge 2 (500 Stk., Fleisch/Fisch dabei)
 python -m app.cli usage [--month 2026-10]              # KI-Kosten je User
 ```
 
@@ -44,12 +45,14 @@ api/app/
   auth/          Apple/Google-ID-Token-Prüfung (JWKS), eigene JWTs, Refresh-Rotation
   services/      planner, ai, recipes (Import/Kosten), schedule (Startzeit)
   routers/       auth, me, meta, recipes, plans   (Prefix /v1)
-api/seed/        ingredients.json (Katalog) + recipes_batch1.json (echter Bestand, 200 Stk.)
+api/seed/        ingredients.json (Katalog) + recipes_batch1.json (200, vegetarisch/vegan)
+                 + recipes_batch2.json (500, mit Fleisch/Fisch/proteinreich)
                  recipes.json (NUR 4 Test-Fixtures, siehe Regeln unten — nicht erweitern)
 api/tests/       pytest, ASGI-Client gegen echtes Postgres
 deploy/          Compose-Overlays, Traefik/Caddy, Proxmox-VM- und Bootstrap-Skripte, Backup
-tools/recipe_generation/   Generator (generate_recipes.py) + Transform ins RecipeIn-Schema
-                 (transform_to_recipein.py) für weitere Rezept-Chargen
+tools/recipe_generation/   transform_to_recipein.py (Generator-Format, generate_recipes.py)
+                 + transform_block_recipes.py (freier Fließtext: Zutaten als String-Liste,
+                 Zubereitung als ein Absatz, Rohdaten in rezepte_block2/) für weitere Chargen
 ```
 
 ## Regeln
@@ -85,17 +88,17 @@ tools/recipe_generation/   Generator (generate_recipes.py) + Transform ins Recip
 
 Phase 1 Backend fertig, 46 Tests grün: Auth, Profil, Rezept-Import, Plan-Generierung (DB → KI → Wiederholung), Startzeit, Offline-Sync, KI-Limits/Logging, Konto-Löschung, Fitnessziele (Bedarf, Makros, kcal-bewusste Planung, Warnungen), Haushalt (Einladen/Beitreten/Verlassen, gemeinsame Pläne, vereinigte Allergien, Portionen je Person).
 
-Wichtig für die Fitnessziele: Der aktuelle Rezeptbestand ist komplett vegetarisch/vegan, max. 22 g Protein und ~600 kcal je Portion. Mit Portionen je Person werden kcal-Ziele bis ~3400 auf ±3 % getroffen, Proteinziele aber nur zu ~65 % (Muskelaufbau 160 g → ~105 g) — der Planer meldet das per Warnung. Abhilfe: proteinreiche Charge (Skyr/Quark, Tofu/Tempeh/Seitan, Hülsenfrüchte; optional Fisch/Fleisch mit passenden Diät-Tags) und mehr Frühstücke/Snacks.
+Wichtig für die Fitnessziele: `recipes_batch1.json` (200 Stk.) ist komplett vegetarisch/vegan, max. 22 g Protein und ~600 kcal je Portion — dort werden Proteinziele nur zu ~65 % erreicht (Muskelaufbau 160 g → ~105 g), der Planer meldet das per Warnung. `recipes_batch2.json` (500 Stk.) bringt erstmals Fleisch/Fisch und höhere Proteinwerte je Portion mit; ob das die Proteinlücke schließt, noch nicht neu gemessen (`usage`/Plan-Warnungen nach dem Import prüfen).
 
 Sign in with Apple: `APPLE_AUDIENCES` in der `.env` der VM muss die iOS-Bundle-ID enthalten (`PRODUCT_BUNDLE_IDENTIFIER` in `ios/Garnix.xcodeproj/project.pbxproj`).
 
 Homelab-Deployment läuft (Traefik + DNS-01, `kochplan.lab.syltwerk.de`, Let's-Encrypt-Zertifikat aktiv, `/healthz` grün).
 
-Rezeptbestand: erste Charge von 200 Rezepten importiert (`seed/recipes_batch1.json`, generiert + ins RecipeIn-Schema übersetzt via `tools/recipe_generation/`), Zutatenkatalog dafür von 24 auf 185 Einträge erweitert. Ziel insgesamt ca. 500 — weitere Chargen über dieselbe Pipeline (`generate_recipes.py` → `transform_to_recipein.py` → `import-recipes --dry-run`).
+Rezeptbestand: Charge 1 (`seed/recipes_batch1.json`, 200, vegetarisch/vegan) und Charge 2 (`seed/recipes_batch2.json`, 500, inkl. Fleisch/Fisch, aus Freitext-Rohdaten via `transform_block_recipes.py` übersetzt) importiert — zusammen 700 Rezepte. Zutatenkatalog dabei von 24 auf 441 Einträge erweitert.
 
 Als Nächstes:
 1. Apple-Token-Revoke bei Kontolöschung (braucht Apple-Client-Secret/p8-Key) — App-Store-Pflicht vor Veröffentlichung.
-2. Weitere Rezept-Chargen (ca. 300 fehlen noch bis Ziel 500), Schwerpunkt proteinreich + Frühstück/Snacks (siehe oben).
+2. Nach Charge 2 prüfen, ob die Proteinlücke (siehe oben) geschlossen ist; ggf. gezielt mehr Frühstücke/Snacks.
 3. iOS-App (SwiftData-Cache über `/v1/recipes/sync` und `/v1/plans?since=`).
 
 Offen/später: Mitglied aus Haushalt entfernen (bisher kann jedes Mitglied nur selbst gehen), Push-Erinnerungen zur Startzeit, Web-App, Cookidoo-Microservice (inoffiziell, nur Eigennutzung, ToS-Risiko — `cookidoo-api` (miaucl) kann Stand 2026-10 **kein** Rezept anlegen/hochladen, weder im Cookidoo-Konto noch aufs Gerät; nur Login + rein lesendes Cook-Status-Monitoring. Eigene Rezepte ans Thermomix schicken ist damit nicht umsetzbar, bis die Lib das selbst unterstützt — vor erneutem Anlauf dort nachsehen), StoreKit/Stripe-Abo, Portionsfaktor je Person (Bruchteil-Portionen, um hohe kcal-Ziele auch mit vorhandenen Rezepten zu treffen), Gewichtsverlauf.
