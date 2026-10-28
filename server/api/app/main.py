@@ -1,12 +1,13 @@
 from fastapi import FastAPI
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.utils import get_openapi
 from sqlalchemy import text
 
 from app.config import get_settings
 from app.db import engine
-from app.errors import AppError, app_error_handler
-from app.routers import auth, me, meta, plans, recipes
+from app.errors import AppError, app_error_handler, validation_error_handler
+from app.routers import auth, household, me, meta, plans, recipes
 
 settings = get_settings()
 
@@ -17,13 +18,14 @@ app = FastAPI(
     redoc_url=None,
 )
 app.add_exception_handler(AppError, app_error_handler)
+app.add_exception_handler(RequestValidationError, validation_error_handler)
 if settings.cors_origins:
     app.add_middleware(
         CORSMiddleware, allow_origins=settings.cors_origins, allow_credentials=False,
         allow_methods=["*"], allow_headers=["Authorization", "Content-Type", "Accept-Language"],
     )
 
-for r in (auth.router, me.router, meta.router, recipes.router, plans.router):
+for r in (auth.router, me.router, household.router, meta.router, recipes.router, plans.router):
     app.include_router(r, prefix="/v1")
 
 

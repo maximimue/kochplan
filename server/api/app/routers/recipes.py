@@ -10,15 +10,13 @@ from app.errors import AppError
 from app.models import Recipe
 from app.schemas import AiRecipeRequest, RecipeOut, RecipeSyncOut
 from app.services.ai import AiService, get_ai_service
+from app.services.household import constraints_for
+from app.services.planner import visible_recipes as _visible
 
 router = APIRouter(prefix="/recipes", tags=["rezepte"])
 
 
-def _visible(user):
-    return or_(Recipe.source == "curated", Recipe.owner_user_id == user.id)
-
-
-@router.get("/sync", response_model=RecipeSyncOut)
+@router.get("/sync", response_model=RecipeSyncOut, operation_id="syncRecipes")
 async def sync(user: CurrentUser, session: Session, since: dt.datetime | None = None):
     """Delta-Sync für den Offline-Cache der iOS-App (SwiftData).
     Erster Aufruf ohne `since` = Vollabgleich. Danach `since` = letztes `server_time`."""
@@ -34,7 +32,7 @@ async def sync(user: CurrentUser, session: Session, since: dt.datetime | None = 
     )
 
 
-@router.get("", response_model=list[RecipeOut])
+@router.get("", response_model=list[RecipeOut], operation_id="listRecipes")
 async def list_recipes(
     user: CurrentUser, session: Session,
     q: str | None = None, meal: str | None = None,
@@ -50,13 +48,14 @@ async def list_recipes(
     if max_minutes:
         stmt = stmt.where(Recipe.prep_minutes + Recipe.cook_minutes + Recipe.passive_minutes <= max_minutes)
     if only_suitable:
-        stmt = stmt.where(Recipe.appliances.contained_by(user.appliances))
-        if user.allergens:
-            stmt = stmt.where(~Recipe.allergens.overlap(user.allergens))
+        c = constraints_for(user)
+        stmt = stmt.where(Recipe.appliances.contained_by(c.appliances))
+        if c.allergens:
+            stmt = stmt.where(~Recipe.allergens.overlap(c.allergens))
     return (await session.scalars(stmt.order_by(Recipe.title).limit(limit).offset(offset))).all()
 
 
-@router.get("/{recipe_id}", response_model=RecipeOut)
+@router.get("/{recipe_id}", response_model=RecipeOut, operation_id="getRecipe")
 async def get_recipe(recipe_id: uuid.UUID, user: CurrentUser, session: Session):
     r = await session.scalar(select(Recipe).where(Recipe.id == recipe_id, _visible(user)))
     if r is None:
@@ -64,7 +63,7 @@ async def get_recipe(recipe_id: uuid.UUID, user: CurrentUser, session: Session):
     return r
 
 
-@router.post("/generate", response_model=RecipeOut, status_code=201)
+@router.post("/generate", response_model=RecipeOut, status_code=201, operation_id="generateRecipe")
 async def generate(
     body: AiRecipeRequest, user: CurrentUser, session: Session,
     ai: Annotated[AiService, Depends(get_ai_service)],

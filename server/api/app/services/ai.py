@@ -12,6 +12,7 @@ from app.config import Settings, get_settings
 from app.errors import AppError
 from app.models import AiUsage, Recipe, Subscription, User
 from app.schemas import RecipeIn
+from app.services.household import constraints_for
 from app.services.recipes import load_catalog, upsert_recipe
 from app.vocab import ALLERGENS, APPLIANCES, MEAL_TYPES, UNIT_CONVERSION
 
@@ -70,13 +71,14 @@ class AiService:
             raise AppError("ai_monthly_limit", 402)
 
     def _user_prompt(self, user: User, meal: str, wish: str | None, avoid_titles: list[str]) -> str:
+        c = constraints_for(user)
         lines = [
             f"Mahlzeit: {meal}",
-            f"Portionen: {user.household_size}",
-            f"Verfügbare Geräte (nur diese verwenden): {', '.join(user.appliances) or 'keine Angabe'}",
-            f"Strikt ausschließen (Allergene): {', '.join(user.allergens) or 'keine'}",
-            f"Ernährungsform: {', '.join(user.diet_tags) or 'keine Einschränkung'}",
-            f"Nicht mögen: {', '.join(user.dislikes) or '-'}",
+            f"Portionen: {c.persons}",
+            f"Verfügbare Geräte (nur diese verwenden): {', '.join(c.appliances) or 'keine Angabe'}",
+            f"Strikt ausschließen (Allergene): {', '.join(c.allergens) or 'keine'}",
+            f"Ernährungsform: {', '.join(c.diet_tags) or 'keine Einschränkung'}",
+            f"Nicht mögen: {', '.join(c.dislikes) or '-'}",
         ]
         if user.weekly_budget_cents:
             lines.append(f"Wochenbudget gesamt: {user.weekly_budget_cents / 100:.2f} € — eher günstig kochen")
@@ -124,14 +126,15 @@ class AiService:
             if not data.meal_types:
                 data.meal_types = [meal]
 
-            # Serverseitig gegenprüfen — der KI wird nicht blind vertraut.
+            # Serverseitig gegenprüfen — der KI wird nicht blind vertraut. Maßstab: alle Haushaltsmitglieder.
+            constraints = constraints_for(user)
             catalog = await load_catalog(session)
             derived = {a for i in data.ingredients if (c := catalog.get(i.name.strip().lower())) for a in c.allergens}
-            if (set(data.allergens) | derived) & set(user.allergens):
+            if (set(data.allergens) | derived) & set(constraints.allergens):
                 raise AppError("ai_constraint_violation", 422, detail="allergens")
-            if not set(data.appliances) <= set(user.appliances):
+            if not set(data.appliances) <= set(constraints.appliances):
                 raise AppError("ai_constraint_violation", 422, detail="appliances")
-            disliked = [d for d in user.dislikes if any(d in i.name.lower() for i in data.ingredients)]
+            disliked = [d for d in constraints.dislikes if any(d in i.name.lower() for i in data.ingredients)]
             if disliked:
                 raise AppError("ai_constraint_violation", 422, detail="dislikes")
 

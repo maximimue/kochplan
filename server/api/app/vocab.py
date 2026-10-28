@@ -14,7 +14,21 @@ ALLERGENS = {
 
 DIET_TAGS = {"vegan", "vegetarisch", "pescetarisch"}
 
+# Welche Rezept-Tags eine Ernährungsform erfüllen: ein veganes Gericht ist auch vegetarisch und pescetarisch.
+DIET_ACCEPTS = {
+    "vegan": {"vegan"},
+    "vegetarisch": {"vegetarisch", "vegan"},
+    "pescetarisch": {"pescetarisch", "vegetarisch", "vegan"},
+}
+
 MEAL_TYPES = {"fruehstueck", "mittag", "abend", "snack"}
+
+FITNESS_GOALS = {"abnehmen", "halten", "aufbauen"}
+
+SEXES = {"weiblich", "maennlich", "divers"}
+
+# Aktivitätslevel -> PAL-Faktor (Gesamtumsatz = Grundumsatz × Faktor)
+ACTIVITY_LEVELS = {"sitzend": 1.2, "leicht": 1.375, "maessig": 1.55, "aktiv": 1.725, "sehr_aktiv": 1.9}
 
 PRICE_TIERS = ("discount", "standard", "bio")
 

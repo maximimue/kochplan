@@ -12,14 +12,18 @@
     "ai_monthly_limit": "Dein monatliches Kontingent an KI-Rezepten ist aufgebraucht.",
     "ai_invalid_output": "Die KI hat kein gültiges Rezept geliefert.",
     "ai_constraint_violation": "Das KI-Rezept passte nicht zu deinen Einstellungen.",
-    "sync_conflict": "Auf dem Server gibt es eine neuere Version dieses Plans."
+    "sync_conflict": "Auf dem Server gibt es eine neuere Version dieses Plans.",
+    "validation_failed": "Ungültige Eingabe: {details}",
+    "invite_invalid": "Einladungscode ungültig oder abgelaufen."
   },
   "warnings": {
     "no_matching_recipes": "Für {date} ({meal}) wurde kein passendes Rezept gefunden.",
     "recipe_repeated": "„{title}“ kommt diese Woche mehrfach vor.",
     "over_budget": "Der Plan liegt {amount} über deinem Budget.",
     "ai_skipped": "KI-Rezepte wurden übersprungen: {reason}",
-    "no_appliances": "Du hast noch keine Küchengeräte angegeben."
+    "no_appliances": "Du hast noch keine Küchengeräte angegeben.",
+    "kcal_target_missed": "An {days} Tag(en) weicht der Plan um mehr als 15 % von deinem Kalorienziel ({target} kcal) ab — mit den vorhandenen Rezepten nicht genauer machbar.",
+    "protein_target_missed": "Dein Proteinziel ({target} g/Tag) wird im Schnitt nur zu {percent} % erreicht. Proteinreiche Rezepte fehlen noch im Bestand."
   },
   "labels": {
     "appliances": {
@@ -35,6 +39,12 @@
     },
     "diet_tags": { "vegan": "Vegan", "vegetarisch": "Vegetarisch", "pescetarisch": "Pescetarisch" },
     "meal_types": { "fruehstueck": "Frühstück", "mittag": "Mittagessen", "abend": "Abendessen", "snack": "Snack" },
+    "fitness_goals": { "abnehmen": "Abnehmen", "halten": "Gewicht halten", "aufbauen": "Muskelaufbau" },
+    "sexes": { "weiblich": "Weiblich", "maennlich": "Männlich", "divers": "Divers" },
+    "activity_levels": {
+      "sitzend": "Kaum aktiv", "leicht": "Leicht aktiv", "maessig": "Mäßig aktiv",
+      "aktiv": "Sehr aktiv", "sehr_aktiv": "Extrem aktiv"
+    },
     "supermarkets": {
       "aldi": "Aldi", "lidl": "Lidl", "netto": "Netto", "penny": "Penny", "rewe": "Rewe",
       "edeka": "Edeka", "kaufland": "Kaufland", "denns": "denn's Biomarkt", "alnatura": "Alnatura",

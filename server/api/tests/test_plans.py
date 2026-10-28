@@ -53,6 +53,14 @@ async def test_budget_warning(client, user):
     assert any(w["code"] == "over_budget" for w in plan["warnings"])
 
 
+async def test_pescetarian_also_gets_vegetarian_recipes(client, user):
+    await setup_profile(client, user, diet_tags=["pescetarisch"])
+    r = await client.post("/v1/plans/generate", headers=user["headers"],
+                          json={"week_start": WEEK, "slots": slots(1), "use_ai": False})
+    assert r.json()["entries"][0]["recipe_id"] is not None
+    assert not any(w["code"] == "no_matching_recipes" for w in r.json()["warnings"])
+
+
 async def test_breakfast_slot_uses_breakfast_recipe(client, user):
     await setup_profile(client, user)
     r = await client.post("/v1/plans/generate", headers=user["headers"],

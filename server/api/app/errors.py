@@ -1,4 +1,5 @@
 from fastapi import Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 from app.i18n import resolve_locale, t
@@ -25,3 +26,18 @@ async def app_error_handler(request: Request, exc: AppError) -> JSONResponse:
     if "detail" in exc.params:
         body["error"]["detail"] = exc.params["detail"]
     return JSONResponse(body, status_code=exc.status)
+
+
+def _describe(err: dict) -> str:
+    field = ".".join(str(p) for p in err["loc"] if p != "body")
+    msg = err["msg"].removeprefix("Value error, ")
+    return f"{field}: {msg}" if field else msg
+
+
+async def validation_error_handler(request: Request, exc: RequestValidationError) -> JSONResponse:
+    """422 im selben Fehlerformat wie AppError, statt FastAPIs `{"detail": [...]}` —
+    Clients müssen so nur ein Format verstehen."""
+    locale = resolve_locale(request.headers.get("accept-language"))
+    details = "; ".join(_describe(e) for e in exc.errors())
+    message = t("errors.validation_failed", locale, details=details)
+    return JSONResponse({"error": {"code": "validation_failed", "message": message}}, status_code=422)

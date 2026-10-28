@@ -2,9 +2,13 @@ import datetime as dt
 import uuid
 from typing import Annotated
 
-from pydantic import BaseModel, ConfigDict, Field, field_validator
+from pydantic import BaseModel, ConfigDict, Field, computed_field, field_validator
 
-from app.vocab import ALLERGENS, APPLIANCES, DIET_TAGS, MEAL_TYPES, PRICE_TIERS, SUPERMARKETS, UNIT_CONVERSION
+from app.services.fitness import MAX_AGE, MIN_AGE, Targets, compute_targets
+from app.vocab import (
+    ACTIVITY_LEVELS, ALLERGENS, APPLIANCES, DIET_TAGS, FITNESS_GOALS, MEAL_TYPES, PRICE_TIERS, SEXES,
+    SUPERMARKETS, UNIT_CONVERSION,
+)
 
 
 def _check(values: list[str], allowed: set[str], field: str) -> list[str]:
@@ -61,7 +65,51 @@ class ProfileOut(ORM):
     allergens: list[str]
     diet_tags: list[str]
     dislikes: list[str]
+    fitness_goal: str | None
+    sex: str | None
+    birth_year: int | None
+    height_cm: int | None
+    weight_kg: float | None
+    activity_level: str | None
     updated_at: dt.datetime
+
+    # Zielwerte flach statt als verschachteltes Objekt: ein nullable `$ref` kann der
+    # swift-openapi-generator im 3.0-Stil nicht sauber als Optional abbilden.
+    def _targets(self) -> Targets | None:
+        return compute_targets(self.fitness_goal, self.sex, self.birth_year, self.height_cm,
+                               self.weight_kg, self.activity_level)
+
+    @computed_field
+    @property
+    def target_kcal(self) -> int | None:
+        return t.kcal if (t := self._targets()) else None
+
+    @computed_field
+    @property
+    def target_protein_g(self) -> int | None:
+        return t.protein_g if (t := self._targets()) else None
+
+    @computed_field
+    @property
+    def target_fat_g(self) -> int | None:
+        return t.fat_g if (t := self._targets()) else None
+
+    @computed_field
+    @property
+    def target_carbs_g(self) -> int | None:
+        return t.carbs_g if (t := self._targets()) else None
+
+    @computed_field
+    @property
+    def recommended_meals_per_day(self) -> int | None:
+        return t.meals_per_day if (t := self._targets()) else None
+
+    # Nullable wie die übrigen Zielwerte (null = keine Ziele): ein Pflicht-Bool würde neue Clients
+    # gegen einen noch nicht aktualisierten Server beim Dekodieren scheitern lassen.
+    @computed_field
+    @property
+    def fitness_deficit_capped(self) -> bool | None:
+        return t.deficit_capped if (t := self._targets()) else None
 
 
 class ProfilePatch(BaseModel):
@@ -75,6 +123,43 @@ class ProfilePatch(BaseModel):
     allergens: list[str] | None = None
     diet_tags: list[str] | None = None
     dislikes: list[str] | None = None
+    # "" = kein Fitnessziel: der generierte Swift-Client lässt nil-Felder weg und kann kein explizites null senden.
+    fitness_goal: str | None = None
+    sex: str | None = None
+    birth_year: int | None = None
+    height_cm: Annotated[int, Field(ge=120, le=230)] | None = None
+    weight_kg: Annotated[float, Field(ge=35, le=300)] | None = None
+    activity_level: str | None = None
+
+    @field_validator("fitness_goal")
+    @classmethod
+    def _goal(cls, v):
+        if not v:
+            return None
+        if v not in FITNESS_GOALS:
+            raise ValueError(f"Unbekanntes Fitnessziel: {v}")
+        return v
+
+    @field_validator("sex")
+    @classmethod
+    def _sex(cls, v):
+        if v is not None and v not in SEXES:
+            raise ValueError(f"Unbekannte Angabe: {v}")
+        return v
+
+    @field_validator("activity_level")
+    @classmethod
+    def _activity(cls, v):
+        if v is not None and v not in ACTIVITY_LEVELS:
+            raise ValueError(f"Unbekanntes Aktivitätslevel: {v}")
+        return v
+
+    @field_validator("birth_year")
+    @classmethod
+    def _birth_year(cls, v):
+        if v is not None and not MIN_AGE <= dt.date.today().year - v <= MAX_AGE:
+            raise ValueError(f"Alter muss zwischen {MIN_AGE} und {MAX_AGE} Jahren liegen")
+        return v
 
     @field_validator("supermarket")
     @classmethod
@@ -95,6 +180,27 @@ class ProfilePatch(BaseModel):
     _al = field_validator("allergens")(lambda cls, v: None if v is None else _check(v, ALLERGENS, "allergens"))
     _dt = field_validator("diet_tags")(lambda cls, v: None if v is None else _check(v, DIET_TAGS, "diet_tags"))
     _dl = field_validator("dislikes")(lambda cls, v: None if v is None else sorted({x.strip().lower() for x in v if x.strip()}))
+
+
+# --------------------------------------------------------------------------- Haushalt
+class HouseholdMemberOut(BaseModel):
+    id: uuid.UUID
+    display_name: str | None
+    email: str | None
+    is_me: bool
+    has_fitness_goal: bool
+
+
+class HouseholdOut(BaseModel):
+    id: uuid.UUID
+    household_size: int
+    members: list[HouseholdMemberOut]
+    invite_code: str | None
+    invite_expires_at: dt.datetime | None
+
+
+class JoinHouseholdIn(BaseModel):
+    code: str = Field(min_length=4, max_length=16)
 
 
 # --------------------------------------------------------------------------- Rezepte
@@ -219,7 +325,6 @@ class SlotIn(BaseModel):
     date: dt.date
     meal: str = "abend"
     eat_at: dt.time | None = None
-    servings: int | None = Field(default=None, ge=1, le=12)
 
     _m = field_validator("meal")(lambda cls, v: _check([v], MEAL_TYPES, "meal")[0])
 
@@ -233,11 +338,12 @@ class GeneratePlanIn(BaseModel):
 
 
 class PlanEntryIn(BaseModel):
+    """Portionen berechnet der Server aus den Fitnesszielen der Mitglieder (kein Client-Feld)."""
+
     id: uuid.UUID | None = None
     date: dt.date
     meal: str
     eat_at: dt.time | None = None
-    servings: int = Field(default=1, ge=1, le=12)
     recipe_id: uuid.UUID | None = None
 
     _m = field_validator("meal")(lambda cls, v: _check([v], MEAL_TYPES, "meal")[0])
@@ -253,7 +359,8 @@ class PlanEntryOut(BaseModel):
     date: dt.date
     meal: str
     eat_at: dt.time | None
-    servings: int
+    total_portions: float   # alle Personen des Haushalts -> Einkauf, Kosten
+    my_portion: float       # Portion des anfragenden Mitglieds -> eigene Makros
     recipe_id: uuid.UUID | None
     recipe_title: str | None
     total_minutes: int | None

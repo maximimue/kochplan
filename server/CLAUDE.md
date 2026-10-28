@@ -9,6 +9,10 @@ Teil des Monorepos `kochplan` (github.com/maximimue/kochplan, public). Dieses Do
 ## Befehle (alle in `api/`)
 
 ```bash
+# Lokal: venv mit Python ≥3.12 (das globale Homebrew-pytest hängt an Python 3.9 und scheitert am Import),
+# Postgres als Wegwerf-Container:
+#   docker run -d --name kochplan-test-pg -e POSTGRES_USER=kochplan -e POSTGRES_PASSWORD=kochplan \
+#     -e POSTGRES_DB=kochplan_test -p 5432:5432 postgres:16
 pytest -q                                              # braucht Postgres-DB kochplan_test (kochplan/kochplan@localhost)
 pytest -q -x tests/test_plans.py::test_name            # einzelner Test
 ENV=dev DEV_LOGIN_ENABLED=true uvicorn app.main:app --reload   # Swagger: /docs, POST /v1/auth/dev {email} für Login ohne Apple/Google
@@ -69,22 +73,32 @@ tools/recipe_generation/   Generator (generate_recipes.py) + Transform ins Recip
 - Postgres 16 im Container statt Oracle Autonomous DB.
 - Kosten sind grob je Preis-Tier (`discount`/`standard`/`bio`), keine Echtzeitpreise.
 - `/openapi.json` wird über `app.openapi = _custom_openapi` (in `main.py`) nachbearbeitet: OpenAPI-3.1-Nullable (`anyOf` mit `null`) wird zu 3.0-Stil (`nullable: true`) konvertiert, Dokument als `3.0.3` deklariert — `swift-openapi-generator` 1.14.3 verwirft 3.1-Nullable-Felder sonst komplett. Betrifft nur die ausgelieferte Spezifikation, nicht die Pydantic-Schemas selbst.
+- 422-Validierungsfehler laufen über `validation_error_handler` (`errors.py`) und haben dasselbe `{"error": {"code", "message"}}`-Format wie `AppError` — Clients kennen nur ein Fehlerformat.
+- Fitness: Tagesbedarf nach Mifflin-St Jeor × PAL-Faktor (`services/fitness.py`), Ziel ±kcal (abnehmen −500, aufbauen +300), Protein je kg (2,0/1,6/2,0), Fett 28 %, Rest Kohlenhydrate. Sicherheitsgrenzen: Mindestalter 18, kein Defizit bei BMI < 18,5, Defizit nie unter 1200/1500/1350 kcal (w/m/d). Zielwerte stehen flach (nullable Skalare) im `ProfileOut`, weil der Swift-Generator nullable `$ref` nicht sauber abbildet. Ziel löschen per `fitness_goal: ""`. Der Planer verteilt das kcal-Ziel nach `MEAL_KCAL_SHARE` auf die Slots eines Tages und wählt zufällig unter den 5 besten Rezepten nach kcal-Nähe + Proteindichte (ohne Ziel unverändert reiner Zufall); verfehlte Ziele werden als Warnung gemeldet statt verschwiegen.
+- Ernährungsformen sind hierarchisch (`DIET_ACCEPTS`): vegan erfüllt vegetarisch und pescetarisch, vegetarisch erfüllt pescetarisch.
+- Haushalt (`Household`, `services/household.py`, `routers/household.py`): Jeder User gehört genau einem Haushalt (beim ersten Login automatisch angelegt). Gemeinsam: Pläne (`MealPlan.household_id`), Supermarkt, Budget, `household_size` (inkl. Personen ohne App), Geräte. Persönlich: Allergien, Ernährungsform, Abneigungen, Fitness — beim Planen gilt die **Vereinigung** aller Mitglieder (`constraints_for`). `ProfileOut`/`ProfilePatch` lesen/schreiben die gemeinsamen Felder über Properties am `User` durch, die Profil-API blieb dadurch stabil. Beitreten per Einladungscode (8 Zeichen ohne 0/O/1/I/L, 48 h gültig, neuer Code entwertet den alten); ein verlassener Ein-Personen-Haushalt wird samt Plänen gelöscht. KI-Rezepte sind für alle Mitglieder sichtbar (`visible_recipes`).
+- Portionen je Person: `PlanEntry.portions = {user_id: Faktor}` (0,5–2,0 in 0,25-Schritten, aus dem Slot-kcal-Ziel des Mitglieds ÷ Rezept-kcal; ohne Ziel 1,0) und `total_portions` = Summe + Personen ohne App. Der Server berechnet sie bei `generate` **und** `PUT` neu, Clients schicken keine Portionen. `PlanEntryOut.my_portion` ist je anfragendem Mitglied. Die Rezeptauswahl orientiert sich am Mittel der Mitglieder-Ziele (`reference_kcal_targets`).
+- `current_user` lädt Haushalt und Mitglieder explizit per `joinedload(...).selectinload(...)` — die zyklische Eager-Kette bricht SQLAlchemy sonst ab, und Nachladen scheitert async (`MissingGreenlet`).
 - MVP-Hosting: Proxmox-VM im Homelab (Debian 13), nur LAN/NetBird erreichbar, `ENV=dev`. Später Oracle Always Free: dort aktuell 2 OCPU / 12 GB A1, Home-Region Frankfurt, Idle-Reclamation beachten (PAYG-Upgrade).
 
 ## Stand
 
-Phase 1 Backend fertig, 26 Tests grün: Auth, Profil, Rezept-Import, Plan-Generierung (DB → KI → Wiederholung), Startzeit, Offline-Sync, KI-Limits/Logging, Konto-Löschung.
+Phase 1 Backend fertig, 46 Tests grün: Auth, Profil, Rezept-Import, Plan-Generierung (DB → KI → Wiederholung), Startzeit, Offline-Sync, KI-Limits/Logging, Konto-Löschung, Fitnessziele (Bedarf, Makros, kcal-bewusste Planung, Warnungen), Haushalt (Einladen/Beitreten/Verlassen, gemeinsame Pläne, vereinigte Allergien, Portionen je Person).
+
+Wichtig für die Fitnessziele: Der aktuelle Rezeptbestand ist komplett vegetarisch/vegan, max. 22 g Protein und ~600 kcal je Portion. Mit Portionen je Person werden kcal-Ziele bis ~3400 auf ±3 % getroffen, Proteinziele aber nur zu ~65 % (Muskelaufbau 160 g → ~105 g) — der Planer meldet das per Warnung. Abhilfe: proteinreiche Charge (Skyr/Quark, Tofu/Tempeh/Seitan, Hülsenfrüchte; optional Fisch/Fleisch mit passenden Diät-Tags) und mehr Frühstücke/Snacks.
+
+Sign in with Apple: `APPLE_AUDIENCES` in der `.env` der VM muss die iOS-Bundle-ID enthalten (steht lokal in `ios/Config/Secrets.xcconfig`, nicht im Repo).
 
 Homelab-Deployment läuft (Traefik + DNS-01, `kochplan.lab.syltwerk.de`, Let's-Encrypt-Zertifikat aktiv, `/healthz` grün).
 
 Rezeptbestand: erste Charge von 200 Rezepten importiert (`seed/recipes_batch1.json`, generiert + ins RecipeIn-Schema übersetzt via `tools/recipe_generation/`), Zutatenkatalog dafür von 24 auf 185 Einträge erweitert. Ziel insgesamt ca. 500 — weitere Chargen über dieselbe Pipeline (`generate_recipes.py` → `transform_to_recipein.py` → `import-recipes --dry-run`).
 
 Als Nächstes:
-1. Sign in with Apple konfigurieren (Bundle-ID in `APPLE_AUDIENCES`).
-2. Weitere Rezept-Chargen (ca. 300 fehlen noch bis Ziel 500).
+1. Apple-Token-Revoke bei Kontolöschung (braucht Apple-Client-Secret/p8-Key) — App-Store-Pflicht vor Veröffentlichung.
+2. Weitere Rezept-Chargen (ca. 300 fehlen noch bis Ziel 500), Schwerpunkt proteinreich + Frühstück/Snacks (siehe oben).
 3. iOS-App (SwiftData-Cache über `/v1/recipes/sync` und `/v1/plans?since=`).
 
-Offen/später: Apple-Token-Revoke bei Kontolöschung, Push-Erinnerungen zur Startzeit, Web-App, Cookidoo-Microservice (inoffiziell, nur Eigennutzung, ToS-Risiko), StoreKit/Stripe-Abo, Fitness-Modul (Makros sind bereits je Rezept vorhanden).
+Offen/später: Mitglied aus Haushalt entfernen (bisher kann jedes Mitglied nur selbst gehen), Push-Erinnerungen zur Startzeit, Web-App, Cookidoo-Microservice (inoffiziell, nur Eigennutzung, ToS-Risiko — `cookidoo-api` (miaucl) kann Stand 2026-10 **kein** Rezept anlegen/hochladen, weder im Cookidoo-Konto noch aufs Gerät; nur Login + rein lesendes Cook-Status-Monitoring. Eigene Rezepte ans Thermomix schicken ist damit nicht umsetzbar, bis die Lib das selbst unterstützt — vor erneutem Anlauf dort nachsehen), StoreKit/Stripe-Abo, Portionsfaktor je Person (Bruchteil-Portionen, um hohe kcal-Ziele auch mit vorhandenen Rezepten zu treffen), Gewichtsverlauf.
 
 ## Token sparen
 

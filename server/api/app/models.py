@@ -31,29 +31,84 @@ class Timestamps:
     )
 
 
-# --------------------------------------------------------------------------- User / Auth
+# --------------------------------------------------------------------------- Haushalt / User / Auth
+class Household(Timestamps, Base):
+    """Gemeinsam genutzt: Wochenpläne, Einkauf, Supermarkt, Budget, Geräte.
+    Persönlich (am User) bleiben Allergien, Ernährungsform, Abneigungen und Fitness."""
+
+    __tablename__ = "households"
+
+    id: Mapped[uuid.UUID] = uuid_pk()
+    supermarket: Mapped[str | None] = mapped_column(String(30))
+    weekly_budget_cents: Mapped[int | None] = mapped_column(Integer)
+    household_size: Mapped[int] = mapped_column(Integer, default=1, nullable=False)   # inkl. Personen ohne App
+    appliances: Mapped[list[str]] = tags_col()
+    invite_code: Mapped[str | None] = mapped_column(String(12), unique=True)
+    invite_expires_at: Mapped[dt.datetime | None] = mapped_column(DateTime(timezone=True))
+
+    members: Mapped[list["User"]] = relationship(back_populates="household", lazy="selectin", order_by="User.created_at")
+
+
 class User(Timestamps, Base):
     __tablename__ = "users"
 
     id: Mapped[uuid.UUID] = uuid_pk()
+    household_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("households.id"), index=True)
     email: Mapped[str | None] = mapped_column(String(320))
     display_name: Mapped[str | None] = mapped_column(String(120))
     locale: Mapped[str] = mapped_column(String(10), default="de", nullable=False)
     timezone: Mapped[str] = mapped_column(String(64), default="Europe/Berlin", nullable=False)
-    supermarket: Mapped[str | None] = mapped_column(String(30))
-    weekly_budget_cents: Mapped[int | None] = mapped_column(Integer)
-    household_size: Mapped[int] = mapped_column(Integer, default=1, nullable=False)
-    appliances: Mapped[list[str]] = tags_col()
     allergens: Mapped[list[str]] = tags_col()
     diet_tags: Mapped[list[str]] = tags_col()
     dislikes: Mapped[list[str]] = tags_col()   # Zutaten-Stichworte, z. B. "koriander"
+    # Fitness (alles optional; Ziele werden erst berechnet, wenn alle Angaben vorliegen)
+    fitness_goal: Mapped[str | None] = mapped_column(String(20))
+    sex: Mapped[str | None] = mapped_column(String(10))
+    birth_year: Mapped[int | None] = mapped_column(Integer)
+    height_cm: Mapped[int | None] = mapped_column(Integer)
+    weight_kg: Mapped[float | None] = mapped_column(Numeric(5, 1))
+    activity_level: Mapped[str | None] = mapped_column(String(20))
 
+    household: Mapped[Household] = relationship(back_populates="members", lazy="joined")
     identities: Mapped[list["AuthIdentity"]] = relationship(
         back_populates="user", cascade="all, delete-orphan", passive_deletes=True
     )
     subscription: Mapped["Subscription | None"] = relationship(
         back_populates="user", cascade="all, delete-orphan", passive_deletes=True, uselist=False
     )
+
+    # Profil-API bleibt stabil: gemeinsame Einstellungen werden über den Haushalt gelesen/geschrieben.
+    @property
+    def supermarket(self) -> str | None:
+        return self.household.supermarket
+
+    @supermarket.setter
+    def supermarket(self, value: str | None) -> None:
+        self.household.supermarket = value
+
+    @property
+    def weekly_budget_cents(self) -> int | None:
+        return self.household.weekly_budget_cents
+
+    @weekly_budget_cents.setter
+    def weekly_budget_cents(self, value: int | None) -> None:
+        self.household.weekly_budget_cents = value
+
+    @property
+    def household_size(self) -> int:
+        return self.household.household_size
+
+    @household_size.setter
+    def household_size(self, value: int) -> None:
+        self.household.household_size = max(value, len(self.household.members))
+
+    @property
+    def appliances(self) -> list[str]:
+        return self.household.appliances
+
+    @appliances.setter
+    def appliances(self, value: list[str]) -> None:
+        self.household.appliances = value
 
 
 class AuthIdentity(Base):
@@ -183,10 +238,10 @@ class RecipeIngredient(Base):
 # --------------------------------------------------------------------------- Planung
 class MealPlan(Timestamps, Base):
     __tablename__ = "meal_plans"
-    __table_args__ = (UniqueConstraint("user_id", "week_start"),)
+    __table_args__ = (UniqueConstraint("household_id", "week_start"),)
 
     id: Mapped[uuid.UUID] = uuid_pk()
-    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    household_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("households.id", ondelete="CASCADE"), index=True)
     week_start: Mapped[dt.date] = mapped_column(Date)
     # Offline-Sync: Zeitstempel der letzten Änderung auf dem Client (Last-Write-Wins)
     client_updated_at: Mapped[dt.datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
@@ -208,7 +263,9 @@ class PlanEntry(Base):
     date: Mapped[dt.date] = mapped_column(Date)
     meal: Mapped[str] = mapped_column(String(20))
     eat_at: Mapped[dt.time | None] = mapped_column(Time)
-    servings: Mapped[int] = mapped_column(Integer, default=1)
+    # Portion je Mitglied {user_id: Faktor}; Summe + Personen ohne App = total_portions (Einkauf, Kosten)
+    portions: Mapped[dict] = mapped_column(JSONB, default=dict, server_default=text("'{}'::jsonb"), nullable=False)
+    total_portions: Mapped[float] = mapped_column(Numeric(5, 2), default=1)
     recipe_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("recipes.id", ondelete="SET NULL"))
     start_at: Mapped[dt.datetime | None] = mapped_column(DateTime(timezone=True))  # UTC
 
