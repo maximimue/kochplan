@@ -1,0 +1,2139 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Kochplan API",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/v1/auth/apple": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Login Apple",
+        "operationId": "loginApple",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppleLoginIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/auth/google": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Login Google",
+        "operationId": "loginGoogle",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GoogleLoginIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/auth/refresh": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Refresh",
+        "operationId": "refreshToken",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/auth/logout": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Logout",
+        "operationId": "logout",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/auth/logout-all": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Logout All",
+        "operationId": "logoutAll",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/me": {
+      "get": {
+        "tags": [
+          "profil"
+        ],
+        "summary": "Get Me",
+        "operationId": "getMe",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "profil"
+        ],
+        "summary": "Patch Me",
+        "operationId": "updateMe",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfilePatch"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "profil"
+        ],
+        "summary": "Delete Me",
+        "description": "Konto-Löschung — Pflicht laut App-Store-Richtlinie 5.1.1(v) und DSGVO Art. 17.\nPersönliches hängt per ON DELETE CASCADE am User (Tokens, KI-Rezepte, Nutzungslog). Der Haushalt\nsamt Plänen wird nur gelöscht, wenn niemand sonst mehr darin ist.\nTODO Production: Apple-Token per /auth/revoke bei Apple widerrufen.",
+        "operationId": "deleteMe",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/household": {
+      "get": {
+        "tags": [
+          "haushalt"
+        ],
+        "summary": "Get Household",
+        "operationId": "getHousehold",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HouseholdOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/household/invite": {
+      "post": {
+        "tags": [
+          "haushalt"
+        ],
+        "summary": "Create Invite",
+        "description": "Neuer Code ersetzt einen alten — so lässt sich ein weitergegebener Code entwerten.",
+        "operationId": "createHouseholdInvite",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HouseholdOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/household/join": {
+      "post": {
+        "tags": [
+          "haushalt"
+        ],
+        "summary": "Join Household",
+        "description": "Wechselt in den Haushalt des Codes. Ein bisheriger Ein-Personen-Haushalt wird samt seiner Pläne gelöscht.",
+        "operationId": "joinHousehold",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JoinHouseholdIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HouseholdOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/household/leave": {
+      "post": {
+        "tags": [
+          "haushalt"
+        ],
+        "summary": "Leave Household",
+        "description": "Eigener neuer Haushalt mit den bisherigen Einstellungen als Startwert; die Pläne bleiben beim alten.",
+        "operationId": "leaveHousehold",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HouseholdOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/meta/vocab": {
+      "get": {
+        "tags": [
+          "meta"
+        ],
+        "summary": "Vocab",
+        "description": "Auswahllisten fürs Onboarding inkl. lokalisierter Labels.",
+        "operationId": "getVocab",
+        "parameters": [
+          {
+            "name": "accept-language",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/recipes/sync": {
+      "get": {
+        "tags": [
+          "rezepte"
+        ],
+        "summary": "Sync",
+        "description": "Delta-Sync für den Offline-Cache der iOS-App (SwiftData).\nErster Aufruf ohne `since` = Vollabgleich. Danach `since` = letztes `server_time`.",
+        "operationId": "syncRecipes",
+        "parameters": [
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Since",
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecipeSyncOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/recipes": {
+      "get": {
+        "tags": [
+          "rezepte"
+        ],
+        "summary": "List Recipes",
+        "operationId": "listRecipes",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Q",
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "meal",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Meal",
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "max_minutes",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Max Minutes",
+              "type": "integer",
+              "minimum": 1,
+              "nullable": true
+            }
+          },
+          {
+            "name": "only_suitable",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "default": true,
+              "title": "Only Suitable"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 200,
+              "minimum": 1,
+              "default": 50,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "title": "Offset"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RecipeOut"
+                  },
+                  "title": "Response Listrecipes"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/recipes/{recipe_id}": {
+      "get": {
+        "tags": [
+          "rezepte"
+        ],
+        "summary": "Get Recipe",
+        "operationId": "getRecipe",
+        "parameters": [
+          {
+            "name": "recipe_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "title": "Recipe Id"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecipeOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/recipes/generate": {
+      "post": {
+        "tags": [
+          "rezepte"
+        ],
+        "summary": "Generate",
+        "operationId": "generateRecipe",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AiRecipeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecipeOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/plans/generate": {
+      "post": {
+        "tags": [
+          "pläne"
+        ],
+        "summary": "Generate",
+        "operationId": "generatePlan",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "accept-language",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GeneratePlanIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/plans": {
+      "get": {
+        "tags": [
+          "pläne"
+        ],
+        "summary": "List Plans",
+        "description": "Delta-Sync: mit `since` auch gelöschte Pläne (deleted=true).",
+        "operationId": "listPlans",
+        "parameters": [
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "title": "Since",
+              "type": "string",
+              "format": "date-time",
+              "nullable": true
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "accept-language",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PlanOut"
+                  },
+                  "title": "Response Listplans"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/plans/{week_start}": {
+      "get": {
+        "tags": [
+          "pläne"
+        ],
+        "summary": "Get Plan",
+        "operationId": "getPlan",
+        "parameters": [
+          {
+            "name": "week_start",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Week Start"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "accept-language",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "pläne"
+        ],
+        "summary": "Put Plan",
+        "description": "Offline-Änderungen hochladen. Last-Write-Wins über client_updated_at:\nist die Server-Version neuer, kommt 409 mit der Server-Version zurück.",
+        "operationId": "upsertPlan",
+        "parameters": [
+          {
+            "name": "week_start",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Week Start"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "accept-language",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Accept-Language",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlanPutIn"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlanOut"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "pläne"
+        ],
+        "summary": "Delete Plan",
+        "operationId": "deletePlan",
+        "parameters": [
+          {
+            "name": "week_start",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "title": "Week Start"
+            }
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "title": "Authorization",
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AiRecipeRequest": {
+        "properties": {
+          "meal": {
+            "type": "string",
+            "title": "Meal",
+            "default": "abend"
+          },
+          "wish": {
+            "title": "Wish",
+            "type": "string",
+            "maxLength": 300,
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "title": "AiRecipeRequest"
+      },
+      "AppleLoginIn": {
+        "properties": {
+          "id_token": {
+            "type": "string",
+            "title": "Id Token"
+          },
+          "raw_nonce": {
+            "title": "Raw Nonce",
+            "type": "string",
+            "nullable": true
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id_token"
+        ],
+        "title": "AppleLoginIn"
+      },
+      "GeneratePlanIn": {
+        "properties": {
+          "week_start": {
+            "type": "string",
+            "format": "date",
+            "title": "Week Start"
+          },
+          "slots": {
+            "items": {
+              "$ref": "#/components/schemas/SlotIn"
+            },
+            "type": "array",
+            "maxItems": 35,
+            "minItems": 1,
+            "title": "Slots"
+          },
+          "use_ai": {
+            "type": "boolean",
+            "title": "Use Ai",
+            "default": true
+          },
+          "seed": {
+            "title": "Seed",
+            "type": "integer",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "week_start",
+          "slots"
+        ],
+        "title": "GeneratePlanIn"
+      },
+      "GoogleLoginIn": {
+        "properties": {
+          "id_token": {
+            "type": "string",
+            "title": "Id Token"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id_token"
+        ],
+        "title": "GoogleLoginIn"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HouseholdMemberOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "title": "Email",
+            "type": "string",
+            "nullable": true
+          },
+          "is_me": {
+            "type": "boolean",
+            "title": "Is Me"
+          },
+          "has_fitness_goal": {
+            "type": "boolean",
+            "title": "Has Fitness Goal"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "display_name",
+          "email",
+          "is_me",
+          "has_fitness_goal"
+        ],
+        "title": "HouseholdMemberOut"
+      },
+      "HouseholdOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "household_size": {
+            "type": "integer",
+            "title": "Household Size"
+          },
+          "members": {
+            "items": {
+              "$ref": "#/components/schemas/HouseholdMemberOut"
+            },
+            "type": "array",
+            "title": "Members"
+          },
+          "invite_code": {
+            "title": "Invite Code",
+            "type": "string",
+            "nullable": true
+          },
+          "invite_expires_at": {
+            "title": "Invite Expires At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "household_size",
+          "members",
+          "invite_code",
+          "invite_expires_at"
+        ],
+        "title": "HouseholdOut"
+      },
+      "JoinHouseholdIn": {
+        "properties": {
+          "code": {
+            "type": "string",
+            "maxLength": 16,
+            "minLength": 4,
+            "title": "Code"
+          }
+        },
+        "type": "object",
+        "required": [
+          "code"
+        ],
+        "title": "JoinHouseholdIn"
+      },
+      "PlanEntryIn": {
+        "properties": {
+          "id": {
+            "title": "Id",
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "title": "Date"
+          },
+          "meal": {
+            "type": "string",
+            "title": "Meal"
+          },
+          "eat_at": {
+            "title": "Eat At",
+            "type": "string",
+            "format": "time",
+            "nullable": true
+          },
+          "recipe_id": {
+            "title": "Recipe Id",
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "date",
+          "meal"
+        ],
+        "title": "PlanEntryIn",
+        "description": "Portionen berechnet der Server aus den Fitnesszielen der Mitglieder (kein Client-Feld)."
+      },
+      "PlanEntryOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "title": "Date"
+          },
+          "meal": {
+            "type": "string",
+            "title": "Meal"
+          },
+          "eat_at": {
+            "title": "Eat At",
+            "type": "string",
+            "format": "time",
+            "nullable": true
+          },
+          "total_portions": {
+            "type": "number",
+            "title": "Total Portions"
+          },
+          "my_portion": {
+            "type": "number",
+            "title": "My Portion"
+          },
+          "recipe_id": {
+            "title": "Recipe Id",
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "recipe_title": {
+            "title": "Recipe Title",
+            "type": "string",
+            "nullable": true
+          },
+          "total_minutes": {
+            "title": "Total Minutes",
+            "type": "integer",
+            "nullable": true
+          },
+          "start_at": {
+            "title": "Start At",
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "cost_cents": {
+            "title": "Cost Cents",
+            "type": "integer",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "date",
+          "meal",
+          "eat_at",
+          "total_portions",
+          "my_portion",
+          "recipe_id",
+          "recipe_title",
+          "total_minutes",
+          "start_at",
+          "cost_cents"
+        ],
+        "title": "PlanEntryOut"
+      },
+      "PlanOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "week_start": {
+            "type": "string",
+            "format": "date",
+            "title": "Week Start"
+          },
+          "entries": {
+            "items": {
+              "$ref": "#/components/schemas/PlanEntryOut"
+            },
+            "type": "array",
+            "title": "Entries"
+          },
+          "total_cost_cents": {
+            "type": "integer",
+            "title": "Total Cost Cents"
+          },
+          "budget_cents": {
+            "title": "Budget Cents",
+            "type": "integer",
+            "nullable": true
+          },
+          "over_budget": {
+            "type": "boolean",
+            "title": "Over Budget"
+          },
+          "warnings": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Warnings",
+            "default": []
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          },
+          "client_updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Client Updated At"
+          },
+          "deleted": {
+            "type": "boolean",
+            "title": "Deleted",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "week_start",
+          "entries",
+          "total_cost_cents",
+          "budget_cents",
+          "over_budget",
+          "updated_at",
+          "client_updated_at"
+        ],
+        "title": "PlanOut"
+      },
+      "PlanPutIn": {
+        "properties": {
+          "client_updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Client Updated At"
+          },
+          "entries": {
+            "items": {
+              "$ref": "#/components/schemas/PlanEntryIn"
+            },
+            "type": "array",
+            "title": "Entries"
+          }
+        },
+        "type": "object",
+        "required": [
+          "client_updated_at",
+          "entries"
+        ],
+        "title": "PlanPutIn"
+      },
+      "ProfileOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "email": {
+            "title": "Email",
+            "type": "string",
+            "nullable": true
+          },
+          "display_name": {
+            "title": "Display Name",
+            "type": "string",
+            "nullable": true
+          },
+          "locale": {
+            "type": "string",
+            "title": "Locale"
+          },
+          "timezone": {
+            "type": "string",
+            "title": "Timezone"
+          },
+          "supermarket": {
+            "title": "Supermarket",
+            "type": "string",
+            "nullable": true
+          },
+          "weekly_budget_cents": {
+            "title": "Weekly Budget Cents",
+            "type": "integer",
+            "nullable": true
+          },
+          "household_size": {
+            "type": "integer",
+            "title": "Household Size"
+          },
+          "appliances": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Appliances"
+          },
+          "allergens": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Allergens"
+          },
+          "diet_tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Diet Tags"
+          },
+          "dislikes": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Dislikes"
+          },
+          "fitness_goal": {
+            "title": "Fitness Goal",
+            "type": "string",
+            "nullable": true
+          },
+          "sex": {
+            "title": "Sex",
+            "type": "string",
+            "nullable": true
+          },
+          "birth_year": {
+            "title": "Birth Year",
+            "type": "integer",
+            "nullable": true
+          },
+          "height_cm": {
+            "title": "Height Cm",
+            "type": "integer",
+            "nullable": true
+          },
+          "weight_kg": {
+            "title": "Weight Kg",
+            "type": "number",
+            "nullable": true
+          },
+          "activity_level": {
+            "title": "Activity Level",
+            "type": "string",
+            "nullable": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          },
+          "target_kcal": {
+            "title": "Target Kcal",
+            "readOnly": true,
+            "type": "integer",
+            "nullable": true
+          },
+          "target_protein_g": {
+            "title": "Target Protein G",
+            "readOnly": true,
+            "type": "integer",
+            "nullable": true
+          },
+          "target_fat_g": {
+            "title": "Target Fat G",
+            "readOnly": true,
+            "type": "integer",
+            "nullable": true
+          },
+          "target_carbs_g": {
+            "title": "Target Carbs G",
+            "readOnly": true,
+            "type": "integer",
+            "nullable": true
+          },
+          "recommended_meals_per_day": {
+            "title": "Recommended Meals Per Day",
+            "readOnly": true,
+            "type": "integer",
+            "nullable": true
+          },
+          "fitness_deficit_capped": {
+            "title": "Fitness Deficit Capped",
+            "readOnly": true,
+            "type": "boolean",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "email",
+          "display_name",
+          "locale",
+          "timezone",
+          "supermarket",
+          "weekly_budget_cents",
+          "household_size",
+          "appliances",
+          "allergens",
+          "diet_tags",
+          "dislikes",
+          "fitness_goal",
+          "sex",
+          "birth_year",
+          "height_cm",
+          "weight_kg",
+          "activity_level",
+          "updated_at",
+          "target_kcal",
+          "target_protein_g",
+          "target_fat_g",
+          "target_carbs_g",
+          "recommended_meals_per_day",
+          "fitness_deficit_capped"
+        ],
+        "title": "ProfileOut"
+      },
+      "ProfilePatch": {
+        "properties": {
+          "display_name": {
+            "title": "Display Name",
+            "type": "string",
+            "nullable": true
+          },
+          "locale": {
+            "title": "Locale",
+            "type": "string",
+            "nullable": true
+          },
+          "timezone": {
+            "title": "Timezone",
+            "type": "string",
+            "nullable": true
+          },
+          "supermarket": {
+            "title": "Supermarket",
+            "type": "string",
+            "nullable": true
+          },
+          "weekly_budget_cents": {
+            "title": "Weekly Budget Cents",
+            "type": "integer",
+            "minimum": 0.0,
+            "nullable": true
+          },
+          "household_size": {
+            "title": "Household Size",
+            "type": "integer",
+            "maximum": 12.0,
+            "minimum": 1.0,
+            "nullable": true
+          },
+          "appliances": {
+            "title": "Appliances",
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "allergens": {
+            "title": "Allergens",
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "diet_tags": {
+            "title": "Diet Tags",
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "dislikes": {
+            "title": "Dislikes",
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "nullable": true
+          },
+          "fitness_goal": {
+            "title": "Fitness Goal",
+            "type": "string",
+            "nullable": true
+          },
+          "sex": {
+            "title": "Sex",
+            "type": "string",
+            "nullable": true
+          },
+          "birth_year": {
+            "title": "Birth Year",
+            "type": "integer",
+            "nullable": true
+          },
+          "height_cm": {
+            "title": "Height Cm",
+            "type": "integer",
+            "maximum": 230.0,
+            "minimum": 120.0,
+            "nullable": true
+          },
+          "weight_kg": {
+            "title": "Weight Kg",
+            "type": "number",
+            "maximum": 300.0,
+            "minimum": 35.0,
+            "nullable": true
+          },
+          "activity_level": {
+            "title": "Activity Level",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "title": "ProfilePatch"
+      },
+      "RecipeIngredientOut": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "quantity": {
+            "title": "Quantity",
+            "type": "number",
+            "nullable": true
+          },
+          "unit": {
+            "title": "Unit",
+            "type": "string",
+            "nullable": true
+          },
+          "note": {
+            "title": "Note",
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "quantity",
+          "unit",
+          "note"
+        ],
+        "title": "RecipeIngredientOut"
+      },
+      "RecipeOut": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "Id"
+          },
+          "slug": {
+            "type": "string",
+            "title": "Slug"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "summary": {
+            "title": "Summary",
+            "type": "string",
+            "nullable": true
+          },
+          "servings": {
+            "type": "integer",
+            "title": "Servings"
+          },
+          "prep_minutes": {
+            "type": "integer",
+            "title": "Prep Minutes"
+          },
+          "cook_minutes": {
+            "type": "integer",
+            "title": "Cook Minutes"
+          },
+          "passive_minutes": {
+            "type": "integer",
+            "title": "Passive Minutes"
+          },
+          "total_minutes": {
+            "type": "integer",
+            "title": "Total Minutes"
+          },
+          "kcal": {
+            "title": "Kcal",
+            "type": "integer",
+            "nullable": true
+          },
+          "protein_g": {
+            "title": "Protein G",
+            "type": "number",
+            "nullable": true
+          },
+          "fat_g": {
+            "title": "Fat G",
+            "type": "number",
+            "nullable": true
+          },
+          "carbs_g": {
+            "title": "Carbs G",
+            "type": "number",
+            "nullable": true
+          },
+          "cost_cents_per_serving": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Cost Cents Per Serving"
+          },
+          "appliances": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Appliances"
+          },
+          "allergens": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Allergens"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Tags"
+          },
+          "meal_types": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Meal Types"
+          },
+          "steps": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Steps"
+          },
+          "source": {
+            "type": "string",
+            "title": "Source"
+          },
+          "ingredients": {
+            "items": {
+              "$ref": "#/components/schemas/RecipeIngredientOut"
+            },
+            "type": "array",
+            "title": "Ingredients"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Updated At"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "slug",
+          "title",
+          "summary",
+          "servings",
+          "prep_minutes",
+          "cook_minutes",
+          "passive_minutes",
+          "total_minutes",
+          "kcal",
+          "protein_g",
+          "fat_g",
+          "carbs_g",
+          "cost_cents_per_serving",
+          "appliances",
+          "allergens",
+          "tags",
+          "meal_types",
+          "steps",
+          "source",
+          "ingredients",
+          "updated_at"
+        ],
+        "title": "RecipeOut"
+      },
+      "RecipeSyncOut": {
+        "properties": {
+          "server_time": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Server Time"
+          },
+          "recipes": {
+            "items": {
+              "$ref": "#/components/schemas/RecipeOut"
+            },
+            "type": "array",
+            "title": "Recipes"
+          },
+          "deleted_ids": {
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "type": "array",
+            "title": "Deleted Ids"
+          }
+        },
+        "type": "object",
+        "required": [
+          "server_time",
+          "recipes",
+          "deleted_ids"
+        ],
+        "title": "RecipeSyncOut"
+      },
+      "RefreshIn": {
+        "properties": {
+          "refresh_token": {
+            "type": "string",
+            "title": "Refresh Token"
+          }
+        },
+        "type": "object",
+        "required": [
+          "refresh_token"
+        ],
+        "title": "RefreshIn"
+      },
+      "SlotIn": {
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date",
+            "title": "Date"
+          },
+          "meal": {
+            "type": "string",
+            "title": "Meal",
+            "default": "abend"
+          },
+          "eat_at": {
+            "title": "Eat At",
+            "type": "string",
+            "format": "time",
+            "nullable": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "date"
+        ],
+        "title": "SlotIn"
+      },
+      "TokenOut": {
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          },
+          "refresh_token": {
+            "type": "string",
+            "title": "Refresh Token"
+          },
+          "token_type": {
+            "type": "string",
+            "title": "Token Type",
+            "default": "bearer"
+          },
+          "expires_in": {
+            "type": "integer",
+            "title": "Expires In"
+          },
+          "user_id": {
+            "type": "string",
+            "format": "uuid",
+            "title": "User Id"
+          },
+          "is_new_user": {
+            "type": "boolean",
+            "title": "Is New User",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": [
+          "access_token",
+          "refresh_token",
+          "expires_in",
+          "user_id"
+        ],
+        "title": "TokenOut"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

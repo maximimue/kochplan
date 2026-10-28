@@ -1,0 +1,3 @@
+#include "Secrets.xcconfig"
+
+API_BASE_URL = https:/$()/kochplan.lab.syltwerk.de

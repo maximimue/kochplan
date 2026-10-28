@@ -87,7 +87,7 @@ Phase 1 Backend fertig, 46 Tests grün: Auth, Profil, Rezept-Import, Plan-Generi
 
 Wichtig für die Fitnessziele: Der aktuelle Rezeptbestand ist komplett vegetarisch/vegan, max. 22 g Protein und ~600 kcal je Portion. Mit Portionen je Person werden kcal-Ziele bis ~3400 auf ±3 % getroffen, Proteinziele aber nur zu ~65 % (Muskelaufbau 160 g → ~105 g) — der Planer meldet das per Warnung. Abhilfe: proteinreiche Charge (Skyr/Quark, Tofu/Tempeh/Seitan, Hülsenfrüchte; optional Fisch/Fleisch mit passenden Diät-Tags) und mehr Frühstücke/Snacks.
 
-Sign in with Apple: `APPLE_AUDIENCES` in der `.env` der VM muss die iOS-Bundle-ID enthalten (steht lokal in `ios/Config/Secrets.xcconfig`, nicht im Repo).
+Sign in with Apple: `APPLE_AUDIENCES` in der `.env` der VM muss die iOS-Bundle-ID enthalten (`PRODUCT_BUNDLE_IDENTIFIER` in `ios/Garnix.xcodeproj/project.pbxproj`).
 
 Homelab-Deployment läuft (Traefik + DNS-01, `kochplan.lab.syltwerk.de`, Let's-Encrypt-Zertifikat aktiv, `/healthz` grün).
 
